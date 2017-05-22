@@ -1,0 +1,18 @@
+type Book @resolve(type: "autopersist") {
+  id: ID!
+  name: String @searchable
+  author: String
+  languages: [String]
+  edition: Edition @searchable
+}
+
+type Edition {
+  pages: Int
+  number: Int
+}
+
+type Order @resolve(type: "autopersist", entity:  "orders") {
+  id: ID!
+  status: String
+  statusDescription: String
+}

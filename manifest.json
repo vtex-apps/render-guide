@@ -1,0 +1,26 @@
+{
+  "name": "library",
+  "vendor": "vtex",
+  "version": "0.0.0",
+  "title": "VTEX Library",
+  "description": "",
+  "mustUpdateAt": "2017-09-26",
+  "dependencies": {
+    "vtex.masterdata-graphql": "0.x"
+  },
+  "registries": [
+    "smartcheckout"
+  ],
+  "scripts": {
+    "postreleasy": "vtex publish --public"
+  },
+  "builders": {
+    "react": "0.x",
+    "service-js": "1.x"
+  },
+  "policies": [
+    {
+      "name": "full-access"
+    }
+  ]
+}

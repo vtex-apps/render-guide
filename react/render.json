@@ -1,0 +1,10 @@
+{
+  "extensions": {
+    "library": {
+      "component": "./index",
+      "route": {
+        "path": "/library"
+      }
+    }
+  }
+}
