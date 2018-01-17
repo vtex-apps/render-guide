@@ -1,4 +1,4 @@
-type Book @resolve(type: "autopersist") {
+type Book @autopersist {
   id: ID!
   name: String @searchable
   author: String
@@ -11,7 +11,7 @@ type Edition {
   number: Int
 }
 
-type Order @resolve(type: "autopersist", entity:  "orders") {
+type Order @autopersist(entity:  "orders") {
   id: ID!
   status: String
   statusDescription: String
