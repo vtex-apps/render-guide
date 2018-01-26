@@ -1,9 +1,9 @@
 type Book @autopersist {
   id: ID!
-  name: String @searchable
-  author: String
+  name: String @searchable @cacheControl(maxAge: 120)
+  author: String @cacheControl(maxAge: 120)
   languages: [String]
-  edition: Edition @searchable
+  edition: Edition @searchable @cacheControl(scope: PRIVATE)
 }
 
 type Edition {
@@ -13,8 +13,14 @@ type Edition {
 
 type Order @autopersist(entity:  "orders") {
   id: ID!
-  status: String
-  statusDescription: String
+  status: String  @cacheControl(scope: PRIVATE)
+  statusDescription: String @cacheControl(scope: PRIVATE)
+  orderedBy: User! @cacheControl(maxAge: 120)
+}
+
+type User {
+  id: ID!
+  name: String
 }
 
 type Query {
@@ -24,3 +30,5 @@ type Query {
 type SampleResult {
   result: String
 }
+
+
