@@ -13,7 +13,8 @@
   },
   "builders": {
     "graphql": "0.x",
-    "react": "0.x"
+    "react": "1.x",
+    "pages": "0.x"
   },
   "policies": [
     {
