@@ -7,7 +7,7 @@ const Library = ({data: {books}}) => {
   return (
     <div>
       <h3>My Library</h3>
-      {books.map(({id, name, author}) => <div key={id}>{name} - {author}</div>)}
+      {books && books.map(({id, name, author}) => <div key={id}>{name} - {author}</div>)}
     </div>
   )
 }
