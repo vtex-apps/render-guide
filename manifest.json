@@ -5,9 +5,6 @@
   "title": "VTEX Library",
   "description": "",
   "mustUpdateAt": "2017-09-26",
-  "dependencies": {
-    "vtex.masterdata-graphql": "0.x"
-  },
   "registries": [
     "smartcheckout"
   ],
@@ -15,8 +12,8 @@
     "postreleasy": "vtex publish --public"
   },
   "builders": {
-    "react": "0.x",
-    "service-js": "1.x"
+    "graphql": "0.x",
+    "react": "0.x"
   },
   "policies": [
     {

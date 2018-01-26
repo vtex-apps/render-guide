@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {graphql} from 'react-apollo'
-import query from './query.gql'
+import query from './query.graphql'
 
 const Library = ({data: {books}}) => {
   return (
