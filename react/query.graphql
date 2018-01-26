@@ -1,7 +1,10 @@
-{
+query SampleQuery($param: String) {
   books {
     id
     name
     author
+  }
+  sampleStaticResolver(param: $param) {
+    result
   }
 }

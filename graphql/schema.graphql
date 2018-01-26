@@ -16,3 +16,11 @@ type Order @autopersist(entity:  "orders") {
   status: String
   statusDescription: String
 }
+
+type Query {
+  sampleStaticResolver(param: String): SampleResult
+}
+
+type SampleResult {
+  result: String
+}
