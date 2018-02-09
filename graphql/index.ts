@@ -1,34 +1,66 @@
-const mockCachedBooks = [
-  {id: '1', name: 'default book', authors: ['author1', 'author2']}
-]
+interface Book {
+  id: string
+  name: string
+  authors: string[]
+}
+
+class BookDatabase {
+  private idCounter = 0
+  private books: Book[] = []
+
+  constructor() {
+    this.books.push({
+      id: this.newID(),
+      name: 'Default Cached Book',
+      authors: ['Default Author 1', 'Default Author 2']
+    })
+
+    this.get = this.get.bind(this)
+    this.getById = this.getById.bind(this)
+  }
+
+  private newID(): string {
+    return (this.idCounter++).toString()
+  }
+
+  public get(): Book[] {
+    return this.books
+  }
+
+  public getById(id: string): Book {
+    return this.books.find((book) => book.id === id)
+  }
+
+  public delete(id: string): boolean {
+    const index = this.books.findIndex((book) => book.id === id)
+
+    if (index != -1) {
+      this.books.splice(index, 1)
+      return true
+    }
+    return false
+  }
+
+  public add({authors, name}) {
+    const book: Book = {
+      name,
+      authors,
+      id: this.newID()
+    }
+    this.books.push(book)
+    return book
+  }
+}
+
+const mock = new BookDatabase()
 
 export const resolvers = {
   Query: {
-    cachedBooks: (_, __) => {
-      return mockCachedBooks
-    },
-    cachedBook: (_, {id}) => {
-      return mockCachedBooks.find((book) => book.id === id)
-    },
+    cachedBooks: (_, __) => mock.get(),
+    cachedBook: (_, {id}) => mock.getById(id),
   },
   Mutation: {
-    deleteCachedBook: (_, {id}) => {
-      const index = mockCachedBooks.findIndex((book) => book.id === id)
-
-      if (-1 < index && index < mockCachedBooks.length) {
-        mockCachedBooks.splice(index, 1)
-        return true
-      }
-      return false
-    },
-    createCachedBook: (_, {data: {authors, name}}) => {
-      const book = {
-        authors,
-        id: (mockCachedBooks.length+1).toString(),
-        name,
-      }
-      mockCachedBooks.push(book)
-      return book
-    }
+    deleteCachedBook: (_, {id}) => mock.delete(id),
+    createCachedBook: (_, {data}) => mock.add(data)
   }
 }

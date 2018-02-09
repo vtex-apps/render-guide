@@ -17,7 +17,7 @@ type CachedBook @cacheControl(scope: PUBLIC, maxAge: 120) {
 
 # It is necessary to generate input types for creating books
 # ref: http://graphql.org/graphql-js/mutations-and-input-types/
-input cachedBookInput {
+input CachedBookInput {
   name: String
   authors: [String!]
 }
@@ -29,5 +29,5 @@ type Query {
 
 type Mutation {
   deleteCachedBook(id: ID!): Boolean
-  createCachedBook(data: cachedBookInput): CachedBook
+  createCachedBook(data: CachedBookInput): CachedBook
 }
