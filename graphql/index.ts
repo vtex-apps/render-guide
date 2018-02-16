@@ -14,9 +14,6 @@ class BookDatabase {
       name: 'Default Cached Book',
       authors: ['Default Author 1', 'Default Author 2']
     })
-
-    this.get = this.get.bind(this)
-    this.getById = this.getById.bind(this)
   }
 
   private newID(): string {

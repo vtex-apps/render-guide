@@ -11,10 +11,6 @@ import getBooks from './graphql/getBooks.graphql'
 import {BooksManager} from './booksManager'
 
 class Library extends Component {
-  constructor(props) {
-    super(props)
-  }
-
   render() {
     const {
       data: {autopersistedBooks, cachedBooks},

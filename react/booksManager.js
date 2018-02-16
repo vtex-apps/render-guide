@@ -3,40 +3,30 @@ import {Component} from 'react'
 export class BooksManager extends Component {
   constructor(props) {
     super(props)
-
-    this.mutate = {
-      create: props.onCreate,
-      delete: props.onDelete
-    }
-
-    this.query = {
-      get: props.onGet
-    }
-
     this.clearInput()
   }
 
   createBook() {
-    const addData = {
+    const options = {
       variables: {
         name: this.state.name,
         authors: this.state.authors.split(',')
       },
-      refetchQueries: [{query: this.query.get}]
+      refetchQueries: [{query: this.props.onGet}]
     }
 
-    this.mutate.create(addData).then(this.clearInput.bind(this))
+    this.props.onCreate(options).then(this.clearInput.bind(this))
   }
 
   deleteBook() {
-    const deleteData = {
+    const options = {
       variables: {
         id: this.state.id
       },
-      refetchQueries: [{query: this.query.get}]
+      refetchQueries: [{query: this.props.onGet}]
     }
 
-    this.mutate.delete(deleteData).then(this.clearInput.bind(this))
+    this.props.onDelete(options).then(this.clearInput.bind(this))
   }
 
   clearInput() {
