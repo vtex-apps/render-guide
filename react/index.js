@@ -8,7 +8,7 @@ import createCachedBook from './graphql/createCachedBook.graphql'
 import deleteCachedBook from './graphql/deleteCachedBook.graphql'
 import getBooks from './graphql/getBooks.graphql'
 
-import {BooksManager} from './booksManager'
+import {BooksManager} from './BooksManager'
 
 class Library extends Component {
   render() {

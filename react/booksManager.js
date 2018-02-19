@@ -3,7 +3,11 @@ import {Component} from 'react'
 export class BooksManager extends Component {
   constructor(props) {
     super(props)
-    this.clearInput()
+    this.state = Object.assign({}, {
+      name: '',
+      authors: '',
+      id: ''
+    })
   }
 
   createBook() {
@@ -30,7 +34,7 @@ export class BooksManager extends Component {
   }
 
   clearInput() {
-    this.state = Object.assign({}, {
+    this.setState({
       name: '',
       authors: '',
       id: ''
@@ -46,11 +50,11 @@ export class BooksManager extends Component {
         <h3>Books in the Library</h3>
         {books && books.map(({id, name, authors}) => {
           return <div key={id}>
-                    <b>{name || 'Name me, please'}</b>
-                    <br/>Authors(split by ','): {(authors && authors.map((authors) => `${authors}, `)) || 'Give me a father, please'}
-                    <br/>ID (click to select):<div onClick={event => this.setState({id: id})}>{id || 'I should have an ID, this is embarrassing'}</div>
-                    <br/>
-                </div>
+            <b>{name || 'Name me, please'}</b>
+            <br/>Authors(split by ','): {(authors && authors.map((authors) => `${authors}, `)) || 'Give me a father, please'}
+            <br/>ID (click to select):<div onClick={event => this.setState({id: id})}>{id || 'I should have an ID, this is embarrassing'}</div>
+            <br/>
+          </div>
         })}
         <br/><hr/>
 
