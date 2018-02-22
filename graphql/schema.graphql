@@ -9,9 +9,9 @@ type AutopersistedBook @autopersist {
 
 # Cache control can be set at each field
 # ref: https://www.apollographql.com/docs/engine/caching.html
-type CachedBook @cacheControl(scope: PUBLIC, maxAge: 120) {
+type CachedBook @cacheControl(scope: PUBLIC, maxAge: SHORT) {
   id: ID!
-  name: String       @cacheControl(scope: PUBLIC, maxAge: 40)
+  name: String       @cacheControl(scope: PUBLIC, maxAge: MEDIUM)
   authors: [String!] @cacheControl(scope: PRIVATE)
 }
 
