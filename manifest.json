@@ -12,8 +12,9 @@
     "postreleasy": "vtex publish --public"
   },
   "builders": {
-    "graphql": "0.x",
-    "react": "1.x",
+    "node": "3.x",
+    "graphql": "1.x",
+    "react": "2.x",
     "pages": "0.x"
   },
   "policies": [
