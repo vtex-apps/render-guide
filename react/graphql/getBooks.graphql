@@ -1,4 +1,4 @@
-query GetBooks {
+query GetBooks @context(version: "1", scope: "public") {
   autopersistedBooks {
     id
     name
