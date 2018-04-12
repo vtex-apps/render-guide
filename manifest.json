@@ -1,8 +1,8 @@
 {
-  "name": "library",
+  "name": "catalogue",
   "vendor": "vtex",
   "version": "0.0.0",
-  "title": "VTEX Library",
+  "title": "VTEX Catalogue manager",
   "description": "",
   "mustUpdateAt": "2017-09-26",
   "registries": [
@@ -19,7 +19,7 @@
   },
   "policies": [
     {
-      "name": "full-access"
+      "name": "resolve-graphql"
     }
   ]
 }

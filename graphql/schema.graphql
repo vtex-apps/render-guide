@@ -12,7 +12,7 @@ type AutopersistedBook @autopersist {
 type CachedBook @cacheControl(scope: PUBLIC, maxAge: SHORT) {
   id: ID!
   name: String       @cacheControl(scope: PUBLIC, maxAge: MEDIUM)
-  authors: [String!] @cacheControl(scope: PRIVATE)
+  authors: [String!] @cacheControl(scope: PUBLIC)
 }
 
 # It is necessary to generate input types for creating books
