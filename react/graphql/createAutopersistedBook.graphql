@@ -2,7 +2,7 @@ mutation CreateBook($name: String, $authors: [String!]) {
   createAutopersistedBook(data: {
     name: $name
     authors: $authors
-  }) @context(scope: "private") {
+  }) {
     id
   }
 }
