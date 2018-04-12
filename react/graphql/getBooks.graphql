@@ -1,10 +1,10 @@
 query GetBooks {
-  autopersistedBooks  @context(scope: "private") {
+  autopersistedBooks  {
     id
     name
     authors
   }
-  cachedBooks @context(scope: "public") {
+  cachedBooks {
     id
     name
     authors

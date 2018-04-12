@@ -19,7 +19,7 @@
   },
   "policies": [
     {
-      "name": "full-access"
+      "name": "resolve-graphql"
     }
   ]
 }
