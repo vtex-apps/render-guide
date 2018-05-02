@@ -1,4 +1,4 @@
-mutation CreateBook($name: String, $authors: [String!]) {
+mutation CreateBook($name: String, $authors: [String!]) @context(scope: "private") {
   createAutopersistedBook(data: {
     name: $name
     authors: $authors

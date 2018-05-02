@@ -1,4 +1,4 @@
-query GetBooks {
+query GetBooks @context(scope: "private")  {
   autopersistedBooks {
     id
     name

@@ -55,5 +55,9 @@ export default compose(
   graphql(deleteAutopersistedBook, {name: 'deleteAutopersistedBook'}),
   graphql(createCachedBook, {name: 'createCachedBook'}),
   graphql(deleteCachedBook, {name: 'deleteCachedBook'}),
-  graphql(getBooks)
+  graphql(getBooks, {
+    options: {
+      ssr: false
+    }
+  })
 )(Library)
