@@ -1,7 +1,7 @@
 # To really understand GraphQL, go to http://graphql.org/learn/
 
 # Autopersisted types are stored automatically in VTEX masterdata
-type AutopersistedBook @cacheControl(scope: PRIVATE) {
+type AutopersistedBook @autopersist @cacheControl(scope: PRIVATE) {
   id: ID!                   # Autopersisted types must have an ID
   name: String @searchable  # @searchable allows you to fetch a book by it's name
   count: Int @autoincrement # @autoincrement will increment the field automatically
