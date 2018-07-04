@@ -16,10 +16,5 @@
     "graphql": "1.x",
     "react": "2.x",
     "pages": "0.x"
-  },
-  "policies": [
-    {
-      "name": "resolve-graphql"
-    }
-  ]
+  }
 }

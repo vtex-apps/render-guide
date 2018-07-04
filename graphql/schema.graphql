@@ -1,7 +1,7 @@
 # To really understand GraphQL, go to http://graphql.org/learn/
 
 # Autopersisted types are stored automatically in VTEX masterdata
-type AutopersistedBook @autopersist @cacheControl(scope: PRIVATE) {
+type AutopersistedBook @autopersist {
   id: ID!                   # Autopersisted types must have an ID
   name: String @searchable  # @searchable allows you to fetch a book by it's name
   count: Int @autoincrement # @autoincrement will increment the field automatically
@@ -10,7 +10,7 @@ type AutopersistedBook @autopersist @cacheControl(scope: PRIVATE) {
 
 # Cache control can be set at each field
 # ref: https://www.apollographql.com/docs/engine/caching.html
-type CachedBook @cacheControl(scope: PUBLIC, maxAge: SHORT) {
+type CachedBook {
   id: ID!
   name: String
   authors: [String!]
@@ -24,11 +24,11 @@ input CachedBookInput {
 }
 
 type Query {
-  cachedBooks: [CachedBook!]
-  cachedBook(id: ID!): CachedBook
+  cachedBooks: [CachedBook!] @cacheControl(scope: PUBLIC, maxAge: SHORT)
+  cachedBook(id: ID!): CachedBook @cacheControl(scope: PUBLIC, maxAge: SHORT)
 }
 
 type Mutation {
-  deleteCachedBook(id: ID!): Boolean
-  createCachedBook(data: CachedBookInput): CachedBook
+  deleteCachedBook(id: ID!): Boolean @cacheControl(scope: PUBLIC, maxAge: SHORT)
+  createCachedBook(data: CachedBookInput): CachedBook @cacheControl(scope: PUBLIC, maxAge: SHORT)
 }
