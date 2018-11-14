@@ -1,8 +1,10 @@
-mutation CreateBook($name: String, $authors: [String!]) {
+mutation CreateBook($name: String, $authors: [String!], $id: String) {
   createCachedBook(data: {
     name: $name
     authors: $authors
-  }) {
-    id
+    id: $id
+  })
+  {
+   id
   }
 }

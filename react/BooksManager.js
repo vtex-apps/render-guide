@@ -14,7 +14,8 @@ export class BooksManager extends Component {
     const options = {
       variables: {
         name: this.state.name,
-        authors: this.state.authors.split(',')
+        authors: this.state.authors.split(','),
+        id: this.state.id,
       },
       refetchQueries: [{query: this.props.onGet}]
     }

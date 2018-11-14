@@ -38,11 +38,11 @@ class BookDatabase {
     return false
   }
 
-  public add({authors, name}) {
+  public add({authors, name, id}) {
     const book: Book = {
       name,
       authors,
-      id: this.newID()
+      id: this.newID(),
     }
     this.books.push(book)
     return book
