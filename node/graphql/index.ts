@@ -11,7 +11,7 @@ class BookDatabase {
   constructor() {
     this.books.push({
       id: this.newID(),
-      name: 'Default Cached Book',
+      name: 'Default  Book',
       authors: ['Default Author 1', 'Default Author 2']
     })
   }
@@ -53,11 +53,11 @@ const mock = new BookDatabase()
 
 export const resolvers = {
   Query: {
-    cachedBooks: (_, __) => mock.get(),
-    cachedBook: (_, {id}) => mock.getById(id),
+    Books: (_, __) => mock.get(),
+    Book: (_, {id}) => mock.getById(id),
   },
   Mutation: {
-    deleteCachedBook: (_, {id}) => mock.delete(id),
-    createCachedBook: (_, {data}) => mock.add(data)
+    deleteBook: (_, {id}) => mock.delete(id),
+    createBook: (_, {data}) => mock.add(data)
   }
 }

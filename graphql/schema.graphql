@@ -2,7 +2,7 @@
 
 # Cache control can be set at each field
 # ref: https://www.apollographql.com/docs/engine/caching.html
-type CachedBook {
+type Book {
   id: ID!
   name: String
   authors: [String!]
@@ -10,17 +10,17 @@ type CachedBook {
 
 # It is necessary to generate input types for creating books
 # ref: http://graphql.org/graphql-js/mutations-and-input-types/
-input CachedBookInput {
+input BookInput {
   name: String
   authors: [String!]
 }
 
 type Query {
-  cachedBooks: [CachedBook!] @cacheControl(scope: PUBLIC, maxAge: SHORT)
-  cachedBook(id: ID!): CachedBook
+  Books: [Book!] @cacheControl(scope: PUBLIC, maxAge: SHORT)
+  Book(id: ID!): Book
 }
 
 type Mutation {
-  deleteCachedBook(id: ID!): Boolean
-  createCachedBook(data: CachedBookInput): CachedBook
+  deleteBook(id: ID!): Boolean
+  createBook(data: BookInput): Book
 }

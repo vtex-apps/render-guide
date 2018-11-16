@@ -15,7 +15,8 @@ export class BooksManager extends Component {
       variables: {
         name: this.state.name,
         authors: this.state.authors.split(','),
-      }, refetchQueries: [{query: this.props.onGet}]
+      },
+      refetchQueries: [{query: this.props.onGet}]
     }
 
     this.props.onCreate(options).then(this.clearInput.bind(this))

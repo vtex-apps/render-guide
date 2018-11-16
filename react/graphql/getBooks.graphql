@@ -1,5 +1,5 @@
 query GetBooks {
-  cachedBooks {
+  Books {
     id
     name
     authors
