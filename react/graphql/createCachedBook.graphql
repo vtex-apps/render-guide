@@ -2,7 +2,6 @@ mutation CreateBook($name: String, $authors: [String!]) {
   createCachedBook(data: {
     name: $name
     authors: $authors
-    id: $id
   })
   {
    id
