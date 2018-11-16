@@ -3,7 +3,7 @@
 # Cache control can be set at each field
 # ref: https://www.apollographql.com/docs/engine/caching.html
 type CachedBook {
-  id: String
+  id: ID!
   name: String
   authors: [String!]
 }
@@ -13,12 +13,11 @@ type CachedBook {
 input CachedBookInput {
   name: String
   authors: [String!]
-  id: String
 }
 
 type Query {
   cachedBooks: [CachedBook!] @cacheControl(scope: PUBLIC, maxAge: SHORT)
-  cachedBook(id: String): CachedBook
+  cachedBook(id: ID!): CachedBook
 }
 
 type Mutation {

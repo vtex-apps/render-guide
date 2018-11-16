@@ -38,7 +38,7 @@ class BookDatabase {
     return false
   }
 
-  public add({authors, name, id}) {
+  public add({authors, name}) {
     const book: Book = {
       name,
       authors,
