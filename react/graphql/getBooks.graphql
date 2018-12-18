@@ -1,7 +1,13 @@
-query GetBooks {
-  Books {
-    id
-    name
-    authors
+query GetBooks($cursor: Int, $numberOfEntries: Int)  {
+  books(cursor: $cursor, numberOfEntries: $numberOfEntries) {
+    content {
+      id
+      name
+      authors
+    }
+    pageinfo {
+      cursor
+      hasNextPage
+    }
   }
 }

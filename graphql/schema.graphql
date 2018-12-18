@@ -8,6 +8,16 @@ type Book {
   authors: [String!]
 }
 
+type PageInfo {
+  cursor: Int!
+  hasNextPage: Boolean!
+}
+
+type BookListwithPageInfo {
+  content: [Book!]
+  pageinfo: PageInfo
+}
+
 # It is necessary to generate input types for creating books
 # ref: http://graphql.org/graphql-js/mutations-and-input-types/
 input BookInput {
@@ -16,11 +26,11 @@ input BookInput {
 }
 
 type Query {
-  Books: [Book!] @cacheControl(scope: PUBLIC, maxAge: SHORT)
-  Book(id: ID!): Book
+  books(cursor: Int, numberOfEntries: Int): BookListwithPageInfo @cacheControl(scope: PUBLIC, maxAge: SHORT)
+  book(id: ID!): Book
 }
 
 type Mutation {
-  deleteBook(id: ID!): Boolean
+  deleteBook(id: ID!): ID
   createBook(data: BookInput): Book
 }
