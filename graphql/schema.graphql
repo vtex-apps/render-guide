@@ -1,9 +1,8 @@
 # To really understand GraphQL, go to http://graphql.org/learn/
 
-# Cache control can be set at each field
-# ref: https://www.apollographql.com/docs/engine/caching.html
 type Book {
   id: ID!
+  cacheId: ID!
   name: String
   authors: [String!]
 }
@@ -25,12 +24,12 @@ input BookInput {
   authors: [String!]
 }
 
+# Cache control can only be set at root fields
 type Query {
   books(cursor: Int, numberOfEntries: Int): BookListwithPageInfo @cacheControl(scope: PUBLIC, maxAge: SHORT)
   book(id: ID!): Book
 }
 
 type Mutation {
-  deleteBook(id: ID!): ID
-  createBook(data: BookInput): Book
+  editBook(id: ID!, book: BookInput!): Book
 }
