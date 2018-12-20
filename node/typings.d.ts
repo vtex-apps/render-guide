@@ -22,16 +22,6 @@ declare global {
     authors: Book['authors']
   }
 
-  interface PageInfo {
-    cursor: number
-    hasNextPage: boolean
-  }
-
-  interface BookListwithPageInfo {
-    content: Book[]
-    pageinfo: PageInfo
-  }
-
   type Maybe<T> = T | void
 }
 

@@ -2,14 +2,10 @@
   "name": "catalogue",
   "vendor": "vtex",
   "version": "0.0.0",
-  "title": "VTEX Catalogue manager",
-  "description": "",
-  "mustUpdateAt": "2017-09-26",
-  "registries": [
-    "smartcheckout"
-  ],
+  "title": "Catalogue Manager",
+  "description": "A sample app for introducing some VTEX IO concepts and best practices",
   "scripts": {
-    "postreleasy": "vtex publish --public"
+    "prereleasy": "bash lint"
   },
   "builders": {
     "node": "3.x",
@@ -17,9 +13,7 @@
     "react": "2.x",
     "pages": "0.x"
   },
-  "policies": [
-    {
-      "name": "resolve-graphql"
-    }
-  ]
+  "dependencies": {
+    "vtex.styleguide": "8.x"
+  }
 }

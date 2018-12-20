@@ -1,0 +1,8 @@
+mutation EditBook ($id: ID!, $book: BookInput!)  {
+  editBook(id: $id, book: $book) {
+    id
+    name
+    authors
+    cacheId
+  }
+}

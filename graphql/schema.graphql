@@ -7,16 +7,6 @@ type Book {
   authors: [String!]
 }
 
-type PageInfo {
-  cursor: Int!
-  hasNextPage: Boolean!
-}
-
-type BookListwithPageInfo {
-  content: [Book!]
-  pageinfo: PageInfo
-}
-
 # It is necessary to generate input types for creating books
 # ref: http://graphql.org/graphql-js/mutations-and-input-types/
 input BookInput {
@@ -26,7 +16,7 @@ input BookInput {
 
 # Cache control can only be set at root fields
 type Query {
-  books(cursor: Int, numberOfEntries: Int): BookListwithPageInfo @cacheControl(scope: PUBLIC, maxAge: SHORT)
+  books(from: Int = 0, to: Int = 4): [Book] @cacheControl(scope: PUBLIC, maxAge: SHORT)
   book(id: ID!): Book
 }
 

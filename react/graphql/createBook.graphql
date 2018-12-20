@@ -1,7 +1,0 @@
-mutation createBook($name: String, $authors: [String!]) {
-  createBook(data: { name: $name, authors: $authors }) {
-    id
-    name
-    authors
-  }
-}
