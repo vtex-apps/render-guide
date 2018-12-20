@@ -1,9 +1,9 @@
 {
-  "name": "catalogue",
+  "name": "render-guide",
   "vendor": "vtex",
   "version": "0.0.0",
-  "title": "Catalogue Manager",
-  "description": "A sample app for introducing some VTEX IO concepts and best practices",
+  "title": "Render Guider",
+  "description": "A sample app for introducing some VTEX IO Render concepts and best practices",
   "scripts": {
     "prereleasy": "bash lint"
   },

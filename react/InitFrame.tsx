@@ -60,7 +60,7 @@ const EmptyStateFallback: React.SFC = () => (
   <div>
     <EmptyState title="Welcome!">
       <p>
-        <a href="https://github.com/vtex-apps/catalogue" >
+        <a href="https://github.com/vtex-apps/render-guide" >
           Help Wanted
         </a>
       </p>

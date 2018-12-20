@@ -18,7 +18,7 @@ interface Props {
 
 const readFromApolloCache = (client: ApolloClient<any>, id: string) => client.readFragment<Book>({
   fragment: bookPreview,
-  id: buildCacheLocator('vtex.catalogue@0.x', 'Book', id),
+  id: buildCacheLocator('vtex.renderguide@0.x', 'Book', id),
 })
 
 interface PreviewProps {
