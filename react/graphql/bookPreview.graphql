@@ -1,0 +1,4 @@
+fragment BookPreview on Book {
+  id
+  name
+}

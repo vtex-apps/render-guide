@@ -1,12 +1,60 @@
 {
-  "pages": {
-    "library": {
-      "path": "/library"
+  "routes": {
+    "learn": {
+      "path": "/learn"
+    },
+    "learn/update-after-mutation": {
+      "path": "/learn/update-after-mutation"
+    },
+    "learn/update-after-mutation/list": {
+      "path": "/learn/update-after-mutation"
+    },
+    "learn/update-after-mutation/detail": {
+      "path": "/learn/update-after-mutation/:id"
+    },
+    "learn/detail-preview": {
+      "path": "/learn/detail-preview"
+    },
+    "learn/detail-preview/list": {
+      "path": "/learn/detail-preview"
+    },
+    "learn/detail-preview/detail": {
+      "path": "/learn/detail-preview/:id"
+    },
+    "learn/comming-soon": {
+      "path": "/learn/comming-soon"
     }
   },
   "extensions": {
-    "library": {
-      "component": "index"
+    "learn": {
+      "component": "InitFrame"
+    },
+    "learn/update-after-mutation": {
+      "component": "UpdateAfterMutation"
+    },
+    "learn/update-after-mutation/list": {
+      "component": "List",
+      "props": {
+        "linkToPage": "learn/update-after-mutation/detail"
+      }
+    },
+    "learn/update-after-mutation/detail": {
+      "component": "UpdateAfterMutationDetail"
+    },
+    "learn/detail-preview": {
+      "component": "DetailPreview"
+    },
+    "learn/detail-preview/list": {
+      "component": "List",
+      "props": {
+        "linkToPage": "learn/detail-preview/detail"
+      }
+    },
+    "learn/detail-preview/detail": {
+      "component": "DetailPreviewDetail"
+    },
+    "learn/comming-soon": {
+      "component": "CommingSoon"
     }
   }
 }
