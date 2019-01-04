@@ -5,6 +5,7 @@
 // it thinks it's necessary. To understand more about fetchMore,
 // please refer to the Apollo Docs !
 import React from 'react'
+import { Query } from 'react-apollo'
 
 import { PaginationController } from './components/paginationController'
 import { WithSyncQueryData } from './components/withSyncQueryData'
@@ -21,16 +22,17 @@ interface Props {
 const Entrypoint: React.SFC<Props> = (props) => (
   <WithSyncQueryData query={totalElements} prop="total">
   {({data: {total}}: any) =>
-    <WithSyncQueryData query={listBooks} prop="books">
-    {({data: {books}, fetchMore}: any) =>
+    <Query query={listBooks} notifyOnNetworkStatusChange={true}>
+    {({data: {books}, fetchMore, loading}) =>
       <PaginationController
         fetchMore={fetchMore}
         books={books}
         total={total}
+        loading={loading}
         {...props}
       />
     }
-    </WithSyncQueryData>
+    </Query>
   }
   </WithSyncQueryData>
 )

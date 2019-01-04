@@ -1,5 +1,5 @@
 export default `
-It's a kid of magic !
+It's a kind of magic !
   
 The whole magic is made by using the cacheId option available in type Book and supported by InMemoryCache.
 

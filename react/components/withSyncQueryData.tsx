@@ -11,10 +11,11 @@ interface Props {
   children: any
   prop: string
   variables?: any
+  notifyOnNetworkStatusChange?: boolean
 }
 
-export const WithSyncQueryData = ({query, children, prop, variables}: Props) => (
-  <Query query={query} variables={variables}>
+export const WithSyncQueryData = ({query, children, prop, variables, notifyOnNetworkStatusChange}: Props) => (
+  <Query query={query} variables={variables} notifyOnNetworkStatusChange={notifyOnNetworkStatusChange}>
   {({loading, data, fetchMore}) => loading
     ? <Spinner />
     : data && data[prop] !== undefined
