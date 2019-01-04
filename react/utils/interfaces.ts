@@ -10,4 +10,12 @@ export interface BookInput {
   authors: Book['authors']
 }
 
-export type Maybe<T> = T | void
+export type Maybe<T> = T | void | null
+
+export interface CachedBookList {
+  books: Array<Partial<Book>>
+}
+
+export interface CachedTotal {
+  total: number
+}

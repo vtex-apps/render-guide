@@ -2,6 +2,17 @@
 declare module 'render' {
   import { Component, ReactElement } from 'react'
 
+  export interface NavigationOptions {
+    page: string
+    params?: any
+  }
+
+  export interface RenderContextProps {
+    runtime: {
+      navigate: (options: NavigationOptions) => void
+    }
+  }
+
   export const ExtensionPoint: ReactElement
   export const Helmet: ReactElement
   export const Link: ReactElement

@@ -1,0 +1,3 @@
+query GetMarkdown ($id: ID!) {
+  source(id: $id)
+}
