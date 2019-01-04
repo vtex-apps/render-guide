@@ -1,59 +1,200 @@
 {
   "routes": {
-    "learn": {
-      "path": "/learn"
+    "guide": {
+      "path": "/guide/:topic"
     },
-    "learn/update-after-mutation": {
-      "path": "/learn/update-after-mutation"
+
+
+    "guide/styleguide": {
+      "path": "/guide/styleguide"
     },
-    "learn/update-after-mutation/list": {
-      "path": "/learn/update-after-mutation"
+
+
+    "guide/automatic-cache-update-list": {
+      "path": "/guide/automatic-cache-update"
     },
-    "learn/update-after-mutation/detail": {
-      "path": "/learn/update-after-mutation/:id"
+    "guide/automatic-cache-update-detail": {
+      "path": "/guide/automatic-cache-update/:id"
     },
-    "learn/detail-preview": {
-      "path": "/learn/detail-preview"
+
+
+    "guide/detail-preview-list": {
+      "path": "/guide/detail-preview"
     },
-    "learn/detail-preview/list": {
-      "path": "/learn/detail-preview"
+    "guide/detail-preview-detail": {
+      "path": "/guide/detail-preview/:id"
     },
-    "learn/detail-preview/detail": {
-      "path": "/learn/detail-preview/:id"
+
+
+    "guide/pagination-list": {
+      "path": "/guide/pagination"
     },
-    "learn/comming-soon": {
-      "path": "/learn/comming-soon"
+    "guide/pagination-detail": {
+      "path": "/guide/pagination/:id"
+    },
+
+
+    "guide/dynamic-pagination-list": {
+      "path": "/guide/dynamic-pagination"
+    },
+    "guide/dynamic-pagination-detail-new": {
+      "path": "/guide/dynamic-pagination/new"
+    },
+    "guide/dynamic-pagination-detail": {
+      "path": "/guide/dynamic-pagination/:id"
+    },
+
+
+    "guide/comming-soon": {
+      "path": "/guide/comming-soon"
     }
   },
   "extensions": {
-    "learn": {
-      "component": "InitFrame"
-    },
-    "learn/update-after-mutation": {
-      "component": "UpdateAfterMutation"
-    },
-    "learn/update-after-mutation/list": {
-      "component": "List",
+
+
+    "guide": {
+      "component": "PageLayout",
       "props": {
-        "linkToPage": "learn/update-after-mutation/detail"
+        "before": "home",
+        "sidebar": [
+          {
+            "link": {
+              "page": "guide",
+              "params": {
+                "topic": "home"
+              }
+            },
+            "name": "Home"
+          },
+          {
+            "link": {
+              "page": "guide/styleguide"
+            },
+            "name": "Using VTEX Styleguide"
+          },
+          {
+            "link": {
+              "page": "guide/comming-soon"
+            },
+            "name": "Internationalization"
+          },
+          {
+            "link": {
+              "page": "guide/comming-soon"
+            },
+            "name": "Extension Points"
+          },
+          {
+            "link": {
+              "page": "guide/automatic-cache-update-list"
+            },
+            "name": "Automatic Cache Update"
+          },
+          {
+            "link": {
+              "page": "guide/detail-preview-list"
+            },
+            "name": "Preview with Cached Data"
+          },
+          {
+            "link": {
+              "page": "guide/pagination-list"
+            },
+            "name": "Static Pagination"
+          },
+          {
+            "link": {
+              "page": "guide/dynamic-pagination-list"
+            },
+            "name": "Dynamic Pagination"
+          }
+        ]
       }
     },
-    "learn/update-after-mutation/detail": {
-      "component": "UpdateAfterMutationDetail"
+
+
+    "guide/styleguide": {
+      "component": "Styleguide"
     },
-    "learn/detail-preview": {
-      "component": "DetailPreview"
-    },
-    "learn/detail-preview/list": {
+
+
+    "guide/automatic-cache-update-list": {
       "component": "List",
       "props": {
-        "linkToPage": "learn/detail-preview/detail"
+        "linkToPage": "guide/automatic-cache-update-detail"
       }
     },
-    "learn/detail-preview/detail": {
-      "component": "DetailPreviewDetail"
+    "guide/automatic-cache-update-detail": {
+      "component": "DetailLayout",
+      "props": {
+        "linkToPage": "guide/automatic-cache-update-list"
+      }
     },
-    "learn/comming-soon": {
+    "guide/automatic-cache-update-detail/component": {
+      "component": "SyncDetail"
+    },
+
+
+    "guide/detail-preview-list": {
+      "component": "List",
+      "props": {
+        "linkToPage": "guide/detail-preview-detail"
+      }
+    },
+    "guide/detail-preview-detail": {
+      "component": "DetailLayout",
+      "props": {
+        "linkToPage": "guide/detail-preview-list"
+      }
+    },
+    "guide/detail-preview-detail/component": {
+      "component": "DetailWithPreview"
+    },
+
+
+    "guide/pagination-list": {
+      "component": "PaginatedList",
+      "props": {
+        "linkToPage": "guide/pagination-detail"
+      }
+    },
+    "guide/pagination-list/wrapper": {
+      "component": "PaginatedTableWrapper"
+    },
+    "guide/pagination-detail": {
+      "component": "DetailLayout",
+      "props": {
+        "linkToPage":  "guide/pagination-list"
+      }
+    },
+    "guide/pagination-detail/component": {
+      "component": "DetailWithPreview"
+    },
+
+
+    "guide/dynamic-pagination-list": {
+      "component": "PaginatedList",
+      "props": {
+        "linkToPage": "guide/dynamic-pagination-detail",
+        "newPage": "guide/dynamic-pagination-detail-new"
+      }
+    },
+    "guide/dynamic-pagination-list/wrapper": {
+      "component": "DynamicPaginatedTableWrapper"
+    },
+    "guide/dynamic-pagination-detail": {
+      "component": "DetailLayout",
+      "props": {
+        "linkToPage": "guide/dynamic-pagination-list"
+      }
+    },
+    "guide/dynamic-pagination-detail/component": {
+      "component": "DetailWithPreview"
+    },
+    "guide/dynamic-pagination-detail-new": {
+      "component": "NewElement"
+    },
+    "guide/comming-soon": {
       "component": "CommingSoon"
     }
   }

@@ -3,4 +3,4 @@ interface Args {
   to: number
 }
 
-export const books = (_: any, {from, to}: Args, {dataSources: {database}}: Context) => database.books(from, to)
+export const books = (_: any, args: Args, {dataSources: {database}}: Context) => database.books(args)
