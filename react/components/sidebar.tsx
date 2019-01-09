@@ -21,6 +21,7 @@ const tableSchema = {
 
 const SideBarWithRutime: React.SFC<Props> = ({runtime, sidebar}) => (
   <Table
+    fullWidth
     schema={tableSchema}
     items={sidebar}
     density="low"
