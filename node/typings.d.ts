@@ -3,29 +3,25 @@ import { ServiceContext } from '@vtex/api'
 import { BookDataSource } from './dataSources/bookDataSource'
 import { MardownDataSource } from './dataSources/markdownDataSource'
 
-declare global {
-  interface Context extends ServiceContext {
-    dataSources: DataSources
-  }
-
-  interface DataSources {
-    database: BookDataSource
-    markdown: MardownDataSource
-  }
-
-  interface Book {
-    id: string
-    cacheId?: string
-    name: string
-    authors: string[]
-  }
-
-  interface BookInput {
-    name: Book['name'],
-    authors: Book['authors']
-  }
-
-  type Maybe<T> = T | void
+export interface Context extends ServiceContext {
+  dataSources: DataSources
 }
 
-export {}
+export interface DataSources {
+  database: BookDataSource
+  markdown: MardownDataSource
+}
+
+export interface Book {
+  authors: string[]
+  cacheId?: string
+  id: string
+  name: string
+}
+
+export interface BookInput {
+  name: Book['name']
+  authors: Book['authors']
+}
+
+export type Maybe<T> = T | void

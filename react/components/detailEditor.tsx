@@ -7,9 +7,10 @@ import React, { Component } from 'react'
 import { Mutation } from 'react-apollo'
 import { Button, Spinner } from 'vtex.styleguide'
 
+import { Book } from '../typings/custom'
 import { parseArray, serializeArray } from '../utils/array'
-import { Book } from '../utils/interfaces'
-import { Input } from './input'
+
+import Input from './Input'
 
 // This mutation makes automatic cache update to work. Note that
 // it queries all changed data from the server back (with cacheId)
@@ -31,10 +32,10 @@ interface State {
   authors: Book['authors']
 }
 
-export class DetailEditor extends Component<Props, State> {
+class DetailEditor extends Component<Props, State> {
   // This method serves to initialize the input with available data in props
   public static getDerivedStateFromProps = (props: Props, state: State) => ({
-    ...props && props.book,
+    ...(props && props.book),
     ...state,
   })
 
@@ -45,44 +46,50 @@ export class DetailEditor extends Component<Props, State> {
 
   public render = () => (
     <Mutation mutation={editBook}>
-    {(save, {loading: saving}) => (
-      <div className="w-40">
-        <div className="mb5">
-          <Input
-            loading={this.props.loading}
-            label="ID"
-            value={this.props.book.id}
-            disabled
-          />
+      {(save, { loading: saving }) => (
+        <div className="w-40">
+          <div className="mb5">
+            <Input
+              loading={this.props.loading}
+              label="ID"
+              value={this.props.book.id}
+              disabled
+            />
+          </div>
+          <div className="mb5">
+            <Input
+              label="Name"
+              value={this.state.name}
+              loading={this.props.loading}
+              onChange={(e: any) => this.setState({ name: e.target.value })}
+            />
+          </div>
+          <div className="mb5">
+            <Input
+              label="Authors"
+              value={serializeArray(this.state.authors)}
+              loading={this.props.loading}
+              onChange={(e: any) =>
+                this.setState({ authors: parseArray(e.target.value) })
+              }
+            />
+          </div>
+          <span className="mr4">
+            {!saving ? (
+              <Button
+                variation="primary"
+                onClick={() => save({ variables: { book: { ...this.state } } })}
+              >
+                Save
+              </Button>
+            ) : (
+              <Spinner />
+            )}
+          </span>
         </div>
-        <div className="mb5">
-          <Input
-            label="Name"
-            value={this.state.name}
-            loading={this.props.loading}
-            onChange={(e: any) => this.setState({name: e.target.value})}
-          />
-        </div>
-        <div className="mb5">
-          <Input
-            label="Authors"
-            value={serializeArray(this.state.authors)}
-            loading={this.props.loading}
-            onChange={(e: any) => this.setState({authors: parseArray(e.target.value)})}
-          />
-        </div>
-        <span className="mr4">
-        {!saving
-          ? (
-            <Button variation="primary" onClick={() => save({variables: {book: {...this.state}}})}>
-              Save
-            </Button>
-          )
-          : <Spinner />
-        }
-        </span>
-      </div>
-    )}
+      )}
     </Mutation>
   )
 }
+
+export default DetailEditor

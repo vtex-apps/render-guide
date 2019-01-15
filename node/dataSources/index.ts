@@ -1,7 +1,9 @@
-import { BookDataSource } from './bookDataSource'
-import { MardownDataSource } from './markdownDataSource'
+import bookDataSource from './book'
+import markdownDataSource from './markdown'
 
-export const dataSources = (): DataSources => ({
-  database: new BookDataSource(),
-  markdown: new MardownDataSource(),
+const dataSources = (): DataSources => ({
+  database: bookDataSource,
+  markdown: markdownDataSource,
 })
+
+export default dataSources

@@ -14,20 +14,22 @@ interface Props {
   disabled?: boolean
 }
 
-export const Input: React.SFC<Props> = ({
+const Input: React.SFC<Props> = ({
   loading,
   label,
   value,
   onChange,
   disabled,
 }) =>
-  value !== undefined
-  ? (
+  value !== undefined ? (
     <StyleguideInput
       disabled={disabled || loading}
       label={label}
       value={value}
       onChange={onChange}
     />
+  ) : (
+    <Spinner />
   )
-  : <Spinner />
+
+export default Input

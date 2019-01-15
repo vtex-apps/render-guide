@@ -9,12 +9,12 @@ type Props = RenderContextProps & {
   linkToPage: string
 }
 
-const BaseHeader: React.SFC<Props> = ({runtime, linkToPage: page}) => (
+const HeaderDetail: React.SFC<Props> = ({ runtime, linkToPage: page }) => (
   <PageHeader
-    title={''}
     linkLabel="Back"
-    onLinkClick={() => runtime.navigate({page})}
+    onLinkClick={() => runtime.navigate({ page })}
+    title=""
   />
 )
 
-export const Header = withRuntimeContext(BaseHeader)
+export default withRuntimeContext(HeaderDetail)

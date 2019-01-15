@@ -1,36 +1,16 @@
-// This component generates the base layout for this app.
-// It renders a sidebar and the children. If there is no children,
-// a greeting message is shown
 import React from 'react'
-import { Layout, PageBlock } from 'vtex.styleguide'
 
-import { MarkdownBlock } from './components/markdownBlock'
-import { SideBar } from './components/sidebar'
+import Sidebar from './components/Sidebar'
+import topics from './components/topics'
 
-interface Props {
-  // The sidebar configuration JSON is given as an input and
-  // is defined in pages.json
-  sidebar: any
-  params: {
-    topic: string
-  }
-}
-
-const ChildrenBlock: React.SFC = ({children}) => children
-  ? <PageBlock>{children}</PageBlock>
-  : null
-
-const Entrypoint: React.SFC<Props> = ({ children, sidebar, params: {topic} }) => (
-  <div className="flex flex-row">
-    <div style={{minWidth: '300px'}}>
-      <SideBar sidebar={sidebar} />
+// This component generates the base layout for this app.
+const PageLayout: React.SFC = ({ children }) => (
+  <div className="vh-100 flex flex-row">
+    <Sidebar topics={topics} />
+    <div className="w-100 overflow-y-scroll">
+      <div className="mw8 pv8 ph9 center">{children}</div>
     </div>
-    <Layout fullWidth>
-      <MarkdownBlock source={`${topic}/before`} />
-      <ChildrenBlock children={children} />
-      <MarkdownBlock source={`${topic}/after`} />
-    </Layout>
   </div>
 )
 
-export default Entrypoint
+export default PageLayout
