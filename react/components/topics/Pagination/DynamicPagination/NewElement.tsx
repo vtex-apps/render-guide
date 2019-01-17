@@ -36,7 +36,7 @@ const updateCache = ({runtime}: Props): MutationUpdaterFn<any> => (cache, {data:
       })
 
       // We end up by navigating back to the list if sucess
-      runtime.navigate({page: 'guide/dynamic-pagination-list'})
+      runtime.navigate({page: 'guide.dynamic-pagination-list'})
     }
   }
   catch (err) {

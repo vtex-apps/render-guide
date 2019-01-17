@@ -16,7 +16,7 @@ const Item: React.SFC<Props> = ({ name, runtime, slug }) => {
       className={`mv6 ph8 f4 pointer ${isHome ? 'b' : ''}`}
       onClick={() => {
         runtime.navigate({
-          page: isHome ? 'guide/home' : 'guide/topic',
+          page: isHome ? 'guide.home' : 'guide.topic',
           ...(slug && { params: { topic: slug } }),
         })
       }}
