@@ -1,0 +1,11 @@
+{
+  "guide.home": {
+    "path": "/guide"
+  },
+  "guide.topic": {
+    "path": "/guide/:topic"
+  },
+  "guide.topic-details": {
+    "path": "/guide/:topic/:id"
+  }
+}

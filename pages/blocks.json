@@ -1,0 +1,11 @@
+{
+  "guide.home": {
+    "inheritComponent": true
+  },
+  "guide.topic": {
+    "inheritComponent": true
+  },
+  "guide.topic-details": {
+    "inheritComponent": true
+  }
+}

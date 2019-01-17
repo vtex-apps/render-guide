@@ -1,0 +1,14 @@
+{
+  "guide": {
+    "wrappers": ["PageLayout"]
+  },
+  "guide.home": {
+    "component": "Home"
+  },
+  "guide.topic": {
+    "component": "Topic"
+  },
+  "guide.topic-details": {
+    "component": "Topic"
+  }
+}

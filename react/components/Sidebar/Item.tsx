@@ -13,7 +13,7 @@ const Item: React.SFC<Props> = ({ name, runtime, slug }) => {
 
   return (
     <li
-      className={`mv6 f4 pointer ${isHome ? 'b' : ''}`}
+      className={`mv6 ph8 f4 pointer ${isHome ? 'b' : ''}`}
       onClick={() => {
         runtime.navigate({
           page: isHome ? 'guide/home' : 'guide/topic',

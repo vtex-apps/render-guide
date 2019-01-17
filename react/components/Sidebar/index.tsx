@@ -1,19 +1,15 @@
 import React from 'react'
 
-import { Topic } from '../../typings/custom'
+import topics from '../topics'
 
-import Item from './Item'
+import SidebarItem from './Item'
 
-interface Props {
-  topics: Topic[]
-}
-
-const Sidebar: React.SFC<Props> = ({ topics }) => (
-  <nav className="pa8 br b--light-gray">
+const Sidebar: React.SFC = () => (
+  <nav className="pv8 br b--light-gray">
     <ul className="pl0 list">
-      <Item name="Render Guide" />
+      <SidebarItem name="Render Guide" />
       {topics.map(topic => (
-        <Item key={topic.slug} name={topic.name} slug={topic.slug} />
+        <SidebarItem key={topic.slug} name={topic.name} slug={topic.slug} />
       ))}
     </ul>
   </nav>
