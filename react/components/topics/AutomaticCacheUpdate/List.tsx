@@ -4,7 +4,7 @@
 import React from 'react'
 // withRuntimeContext provides us with the navigate function,
 // necessary for creating links
-import { RenderContextProps, withRuntimeContext } from 'render'
+import { RenderContextProps, withRuntimeContext } from 'vtex.render-runtime'
 import { Table } from 'vtex.styleguide'
 
 // Here is an important part of Automatic Cache Update. For updating

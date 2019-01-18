@@ -1,6 +1,6 @@
 // This component is just a wrapper for Styleguide's table
 import React from 'react'
-import { RenderContextProps, withRuntimeContext } from 'render'
+import { RenderContextProps, withRuntimeContext } from 'vtex.render-runtime'
 import { Table } from 'vtex.styleguide'
 
 import { Book } from '../../../../typings/custom'

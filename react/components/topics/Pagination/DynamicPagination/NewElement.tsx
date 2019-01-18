@@ -1,6 +1,6 @@
 import { MutationUpdaterFn } from 'apollo-client'
 import React from 'react'
-import { RenderContextProps, withRuntimeContext } from 'render'
+import { RenderContextProps, withRuntimeContext } from 'vtex.render-runtime'
 
 import { CachedBookList, CachedTotal } from '../../../../typings/custom'
 import listQuery from '../../../graphql/books.graphql'

@@ -3,7 +3,7 @@
 import ApolloClient from 'apollo-client'
 import React from 'react'
 import { Query } from 'react-apollo'
-import { buildCacheLocator } from 'render'
+import { buildCacheLocator } from 'vtex.render-runtime'
 
 import { Book } from '../../../typings/custom'
 import DetailEditor from '../../DetailEditor'

@@ -1,5 +1,5 @@
 import React from 'react'
-import { RenderContextProps, withRuntimeContext } from 'render'
+import { RenderContextProps, withRuntimeContext } from 'vtex.render-runtime'
 
 import { Topic } from '../../typings/custom'
 

@@ -4,7 +4,7 @@
 // rendered and set up in pages.json
 
 import React, { Fragment } from 'react'
-import { ExtensionPoint } from 'render'
+import { ExtensionPoint } from 'vtex.render-runtime'
 
 import HeaderDetail from './components/HeaderDetail'
 
