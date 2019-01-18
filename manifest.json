@@ -14,6 +14,6 @@
     "react": "3.x"
   },
   "dependencies": {
-    "vtex.styleguide": "8.x"
+    "vtex.styleguide": "9.x"
   }
 }
