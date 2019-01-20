@@ -1,6 +1,6 @@
 {
   "guide": {
-    "wrappers": ["PageLayout"]
+    "around": ["layout"]
   },
   "guide.home": {
     "component": "Home"
@@ -10,5 +10,8 @@
   },
   "guide.topic-details": {
     "component": "Topic"
+  },
+  "layout": {
+    "component": "PageLayout"
   }
 }
