@@ -1,6 +1,8 @@
+import { Query } from '../../typedql/schema'
+
 interface Args {
-  from: number
-  to: number
+  from:Parameters<Query['books']>[0]
+  to:Parameters<Query['books']>[1]
 }
 
-export const books = (_: any, args: Args, {dataSources: {database}}: Context) => database.books(args)
+export const books = (_: any, args: Args, {dataSources: {database}}: Context) => database.books(args.from, args.to)
