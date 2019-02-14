@@ -1,1 +1,7 @@
-export const book = (_: any, {id}: {id: string}, {dataSources: {database}}: Context) => database.book(id)
+import { Query } from '../../typedql/schema'
+
+interface Args {
+  id:Parameters<Query['book']>[0]
+}
+
+export const book = (_: any, {id}: Args, {dataSources: {database}}: Context) => database.book(id)

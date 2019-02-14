@@ -12,20 +12,6 @@ declare global {
     database: BookDataSource
     markdown: MardownDataSource
   }
-
-  interface Book {
-    id: string
-    cacheId?: string
-    name: string
-    authors: string[]
-  }
-
-  interface BookInput {
-    name: Book['name'],
-    authors: Book['authors']
-  }
-
-  type Maybe<T> = T | void
 }
 
 export {}
