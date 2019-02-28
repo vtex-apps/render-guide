@@ -4,7 +4,7 @@ export default `
   ## Welcome
   While coding apps, developers face common problems and patterns that are not strictly related to their business logic, like pagination and editing entities. To help you focuss more on your business logic, and less on reinventing the wheel, this repo was created aimming to contain all common patterns, all while respecting **Render's** best practices and performance.
 
-  ## What can I guide in this code base ?
+  ## What can I learn in this code base ?
   In this repo you will learn how to:
 
   - Use [VTEX Styleguide](https://styleguide.vtex.com/)
