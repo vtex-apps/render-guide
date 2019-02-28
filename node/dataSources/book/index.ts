@@ -13,13 +13,31 @@ class BookDataSource extends DataSource<Context> {
   public books = ({ from, to }: { from: number; to: number }) =>
     this.db.slice(Math.max(from, 0), Math.min(to, this.db.length))
 
-  public total = () => this.db.length
+  public delete = (id: string) => {
+    const foundIndex = findIndex(propEq('id', id), this.db)
+
+    if (foundIndex >= 0 && foundIndex < this.db.length) {
+      const newDb = [
+        ...this.db.slice(0, foundIndex),
+        ...this.db.slice(foundIndex + 1),
+      ]
+
+      this.db = newDb
+
+      return true
+    }
+
+    return false
+  }
 
   public editBook = (id: string, book: BookInput): Maybe<Book> => {
     const foundIndex = findIndex(propEq('id', id), this.db)
-    if (0 <= foundIndex && foundIndex < this.db.length) {
+
+    if (foundIndex >= 0 && foundIndex < this.db.length) {
       const foundBook = this.db[foundIndex]
+
       this.db[foundIndex] = { ...foundBook, ...book }
+
       return this.db[foundIndex]
     }
   }
@@ -29,18 +47,15 @@ class BookDataSource extends DataSource<Context> {
       ...book,
       id: this.db.length.toString(),
     }
-    this.db.unshift(newBook)
+
+    const newDb = [newBook, ...this.db]
+
+    this.db = newDb
+
     return newBook
   }
 
-  public delete = (id: string) => {
-    const foundIndex = findIndex(propEq('id', id), this.db)
-    if (0 <= foundIndex && foundIndex < this.db.length) {
-      this.db.splice(foundIndex, 1)
-      return true
-    }
-    return false
-  }
+  public total = () => this.db.length
 }
 
 export default new BookDataSource()
