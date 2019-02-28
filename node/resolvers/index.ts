@@ -8,7 +8,7 @@ import { newBook } from './newBook'
 import { source } from './source'
 import { total } from './total'
 
-export const resolvers = {
+const resolvers = {
   Book: {
     cacheId: prop('id'),
   },
@@ -24,3 +24,5 @@ export const resolvers = {
     total,
   },
 }
+
+export default resolvers

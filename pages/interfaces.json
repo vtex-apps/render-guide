@@ -1,0 +1,17 @@
+{
+  "guide": {
+    "around": ["layout"]
+  },
+  "guide.home": {
+    "component": "Home"
+  },
+  "guide.topic": {
+    "component": "Topic"
+  },
+  "guide.topic-details": {
+    "component": "Topic"
+  },
+  "layout": {
+    "component": "PageLayout"
+  }
+}

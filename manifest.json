@@ -8,12 +8,12 @@
     "prereleasy": "bash lint"
   },
   "builders": {
-    "node": "3.x",
     "graphql": "1.x",
-    "react": "2.x",
-    "pages": "0.x"
+    "node": "3.x",
+    "pages": "1.x",
+    "react": "3.x"
   },
   "dependencies": {
-    "vtex.styleguide": "8.x"
+    "vtex.styleguide": "9.x"
   }
 }

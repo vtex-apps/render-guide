@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { ExtensionPoint } from 'render'
+import { ExtensionPoint } from 'vtex.render-runtime'
 import { Spinner } from 'vtex.styleguide'
 
 import { Book } from '../utils/interfaces'
