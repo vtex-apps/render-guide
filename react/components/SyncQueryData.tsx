@@ -3,7 +3,7 @@ import { Query } from 'react-apollo'
 import { Spinner } from 'vtex.styleguide'
 
 interface Props {
-  children: any
+  children: (queryResult: any) => JSX.Element
   notifyOnNetworkStatusChange?: boolean
   prop: string
   query: any
@@ -25,10 +25,10 @@ const SyncQueryData = ({
     query={query}
     variables={variables}
   >
-    {({ loading, data, fetchMore }) =>
+    {({ data, fetchMore, loading }) =>
       loading ? (
         <Spinner />
-      ) : data && data[prop] !== undefined ? (
+      ) : children && data && data[prop] !== undefined ? (
         children({ data, fetchMore })
       ) : null
     }

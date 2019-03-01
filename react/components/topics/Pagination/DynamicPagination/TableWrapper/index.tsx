@@ -3,11 +3,17 @@ import React from 'react'
 import { RenderContextProps, withRuntimeContext } from 'vtex.render-runtime'
 import { Table } from 'vtex.styleguide'
 
-import { Book } from '../../../../typings/custom'
+import { Book } from '../../../../../typings/custom'
+import DeleteButton from '../DeleteButton'
 
-import { DeleteButton } from './DeleteButton'
+import { Row } from './typings'
 
 const tableSchema = {
+  delete: {
+    cellRenderer: ({ rowData: { id } }: Row) => <DeleteButton id={id} />,
+    title: 'Delete',
+    type: 'object',
+  },
   properties: {
     id: {
       title: 'ID',
@@ -17,45 +23,34 @@ const tableSchema = {
       title: 'Name',
       type: 'string',
     },
-    // tslint:disable-next-line:object-literal-sort-keys
-    delete: {
-      cellRenderer: ({rowData: {id}}: Row) => <DeleteButton id={id}/>,
-      title: 'Delete',
-      type: 'object',
-    },
   },
 }
 
-type Props = RenderContextProps & {
-  linkToPage: string
-  total: number
+interface CustomProps {
   books: Book[]
   elementsPerPage: number
-  newPage: string
   from: number
-  to: number
+  linkToPage: string
+  newPage: string
   next: () => void
   previous: () => void
+  to: number
+  total: number
 }
 
-interface Row {
-  rowData: {
-    id: Book['id'];
-    name: Book['name'];
-  }
-}
+type Props = CustomProps & RenderContextProps
 
 const PaginatedList: React.SFC<Props> = ({
   books,
-  from,
-  to,
-  next,
-  previous,
   elementsPerPage,
-  total,
+  from,
   linkToPage,
   newPage,
+  next,
+  previous,
   runtime,
+  to,
+  total,
 }) => (
   <Table
     emptyStateLabel={'Nothing to show'}
@@ -63,13 +58,15 @@ const PaginatedList: React.SFC<Props> = ({
     items={books}
     fixFirstColumn
     density="low"
-    onRowClick={({ rowData: { id } }: Row) => runtime.navigate({
-      page: linkToPage,
-      params: {
-        id,
-        view: 'detail',
-      },
-    })}
+    onRowClick={({ rowData: { id } }: Row) =>
+      runtime.navigate({
+        page: linkToPage,
+        params: {
+          id,
+          view: 'detail',
+        },
+      })
+    }
     pagination={{
       currentItemFrom: from,
       currentItemTo: to,
@@ -83,7 +80,7 @@ const PaginatedList: React.SFC<Props> = ({
     }}
     toolbar={{
       newLine: {
-        handleCallback: () => runtime.navigate({page: newPage}),
+        handleCallback: () => runtime.navigate({ page: newPage }),
         label: 'New',
       },
     }}

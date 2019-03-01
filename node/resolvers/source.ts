@@ -1,4 +1,4 @@
-import { Context } from '../typings'
+import { Context } from '../typings/custom'
 
 interface Args {
   id: string

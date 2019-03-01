@@ -1,5 +1,3 @@
-import { Context } from '../typings'
-
 export const book = (
   _: any,
   { id }: { id: string },

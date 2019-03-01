@@ -5,16 +5,18 @@ import React from 'react'
 import { RenderContextProps, withRuntimeContext } from 'vtex.render-runtime'
 import { PageHeader } from 'vtex.styleguide'
 
-type Props = RenderContextProps & {
+interface CustomProps {
   linkToPage: string
 }
 
-const HeaderDetail: React.SFC<Props> = ({ runtime, linkToPage: page }) => (
+type Props = CustomProps & RenderContextProps
+
+const Header: React.SFC<Props> = ({ linkToPage, runtime }) => (
   <PageHeader
     linkLabel="Back"
-    onLinkClick={() => runtime.navigate({ page })}
+    onLinkClick={() => runtime.navigate({ page: linkToPage })}
     title=""
   />
 )
 
-export default withRuntimeContext(HeaderDetail)
+export default withRuntimeContext(Header)

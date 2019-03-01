@@ -1,7 +1,7 @@
 import { DataSource } from 'apollo-datasource'
 import { find, findIndex, propEq } from 'ramda'
 
-import { Book, BookInput, Context, Maybe } from '../../typings'
+import { Book, BookInput, Maybe } from '../../typings/custom'
 
 import mock from './mock'
 

@@ -7,19 +7,18 @@ import React, { Component } from 'react'
 import { Mutation } from 'react-apollo'
 import { Button, Spinner } from 'vtex.styleguide'
 
-import { Book } from '../typings/custom'
-import { parseArray, serializeArray } from '../utils/array'
-
-import Input from './Input'
-
 // This mutation makes automatic cache update to work. Note that
 // it queries all changed data from the server back (with cacheId)
 // so that when the altered data arrives, it can automatically
 // rewrite the data in the local browser cache
 import editBook from '../graphql/editBook.graphql'
+import { Book } from '../typings/custom'
+import { parseArray, serializeArray } from '../utils/array'
+
+import Input from './Input'
 
 interface Props {
-  // The incomming query data. Note that it can be partially
+  // The incoming query data. Note that it can be partially
   // available in case of reading from local cache
   book: Partial<Book>
   // Loading state of the query that loads the full book data
@@ -28,8 +27,8 @@ interface Props {
 
 // The state keeps track from the altered user input
 interface State {
-  name: Book['name']
-  authors: Book['authors']
+  name?: Book['name']
+  authors?: Book['authors']
 }
 
 class DetailEditor extends Component<Props, State> {
@@ -38,11 +37,6 @@ class DetailEditor extends Component<Props, State> {
     ...(props && props.book),
     ...state,
   })
-
-  constructor(props: Props) {
-    super(props)
-    this.state = {} as any
-  }
 
   public render = () => (
     <Mutation mutation={editBook}>

@@ -1,4 +1,4 @@
-import automaticCacheUpdate from './docs/automaticCacheUpdate'
+import automaticCacheUpdates from './docs/automaticCacheUpdates'
 import dynamicPagination from './docs/dynamicPagination'
 import home from './docs/home'
 import previewWithCachedData from './docs/previewWithCachedData'
@@ -10,8 +10,8 @@ interface MarkdownData {
 }
 
 const mock: MarkdownData = {
-  'automatic-cache-update/after': automaticCacheUpdate.after,
-  'automatic-cache-update/before': automaticCacheUpdate.before,
+  'automatic-cache-updates/after': automaticCacheUpdates.after,
+  'automatic-cache-updates/before': automaticCacheUpdates.before,
   'dynamic-pagination/after': dynamicPagination.after,
   'dynamic-pagination/before': dynamicPagination.before,
   'home/main': home.main,

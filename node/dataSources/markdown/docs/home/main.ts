@@ -20,7 +20,7 @@ export default `
     - Pagination
 
   ## Can I use this repo in my projects ?
-  Sure ! this repository was designed with this goal in mind. If you are not able to easily port this code into your app, feel free to make a PR and start [contributing](https://github.com/vtex-apps/awesome-io#contributing).
+  Sure! this repository was designed with this goal in mind. If you are not able to easily port this code into your app, feel free to make a PR and start [contributing](https://github.com/vtex-apps/awesome-io#contributing).
 
   ## Getting Started
   This repo is an IO app like any other, so getting started is easy, just clone it, open your terminal, and type:

@@ -1,5 +1,3 @@
-import { DataSources } from '../typings'
-
 import bookDataSource from './book'
 import markdownDataSource from './markdown'
 

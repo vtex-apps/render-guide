@@ -6,7 +6,7 @@
 import React, { Fragment } from 'react'
 import { ExtensionPoint } from 'vtex.render-runtime'
 
-import HeaderDetail from './components/HeaderDetail'
+import Header from './Header'
 
 interface Props {
   params: {
@@ -17,7 +17,7 @@ interface Props {
 
 const DetailLayout: React.SFC<Props> = ({ linkToPage, params: { id } }) => (
   <Fragment>
-    <HeaderDetail linkToPage={linkToPage} />
+    <Header linkToPage={linkToPage} />
     <ExtensionPoint id="component" itemId={id} />
   </Fragment>
 )

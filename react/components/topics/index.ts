@@ -1,6 +1,6 @@
 import { Topic } from '../../typings/custom'
 
-import AutomaticCacheUpdate from './AutomaticCacheUpdate'
+import AutomaticCacheUpdates from './AutomaticCacheUpdates'
 import ExtensionPoints from './ExtensionPoints'
 import Internationalization from './Internationalization'
 import DynamicPagination from './Pagination/DynamicPagination'
@@ -10,9 +10,9 @@ import Styleguide from './Styleguide'
 
 const topics: Topic[] = [
   {
-    Component: AutomaticCacheUpdate,
-    name: 'Automatic cache update',
-    slug: 'automatic-cache-update',
+    Component: AutomaticCacheUpdates,
+    name: 'Automatic cache updates',
+    slug: 'automatic-cache-updates',
   },
   {
     Component: DynamicPagination,
@@ -36,7 +36,7 @@ const topics: Topic[] = [
   },
   {
     Component: StaticPagination,
-    name: 'Static Pagination',
+    name: 'Static pagination',
     slug: 'static-pagination',
   },
   {
