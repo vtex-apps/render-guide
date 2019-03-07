@@ -2,14 +2,13 @@ import React, { Component } from 'react'
 import { ExtensionPoint } from 'vtex.render-runtime'
 import { Spinner } from 'vtex.styleguide'
 
-import { Book } from '../../typings/custom'
+import { Book } from '../../../typings/custom'
 
 import { updateQuery } from './utils'
 
 interface Props {
   books: Book[]
   fetchMore: (options: any) => Promise<any>
-  linkToPage: string
   loading?: boolean
   newPage?: string
   total: number
@@ -35,7 +34,7 @@ class PaginationController extends Component<Props, State> {
   }
 
   public render = () => {
-    const { books, linkToPage, loading, newPage, total } = this.props
+    const { books, loading, newPage, total } = this.props
 
     const from = this.state.currentPage * this.state.elementsPerPage
 
@@ -57,13 +56,11 @@ class PaginationController extends Component<Props, State> {
 
     return (
       <ExtensionPoint
-        id="wrapper"
-        {...this.props}
         books={books.slice(from, to)}
         currentPage={this.state.currentPage}
         elementsPerPage={this.state.elementsPerPage}
         from={from}
-        linkToPage={linkToPage}
+        id="wrapper"
         newPage={newPage}
         next={this.getPageChangeHandler(nextPage)}
         previous={this.getPageChangeHandler(previousPage)}

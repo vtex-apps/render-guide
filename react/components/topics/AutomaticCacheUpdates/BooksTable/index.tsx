@@ -10,38 +10,33 @@ import { Table } from 'vtex.styleguide'
 // Here is an important part of Automatic Cache Update. For updating
 // the cache we first need to query our list, with each element having
 // a cacheId that will uniquely identify it in the local browser's cache
-import listBooks from '../../../../graphql/books.graphql'
 import { Book } from '../../../../typings/custom'
-import SyncQueryData from '../../../SyncQueryData'
 
 import { tableSchema } from './consts'
 import { Row } from './typings'
 
 interface CustomProps {
-  // This is the link we need to send the user to when a row is clicked
-  linkToPage: string
+  items: Book[]
 }
 
 type Props = CustomProps & RenderContextProps
 
-const List: React.SFC<Props> = ({ linkToPage, runtime }) => (
-  <SyncQueryData query={listBooks} prop="books">
-    {({ data: { books } }) => (
-      <Table
-        density="low"
-        items={books.map((book: Book) => ({ id: book.id, name: book.name }))}
-        onRowClick={({ rowData: { id } }: Row) => {
-          runtime.navigate({
-            page: linkToPage,
-            params: {
-              id,
-            },
-          })
-        }}
-        schema={tableSchema}
-      />
-    )}
-  </SyncQueryData>
+const BooksTable: React.SFC<Props> = ({ items, runtime }) => (
+  <Table
+    density="low"
+    fullWidth
+    items={items.map((item: Book) => ({ id: item.id, name: item.name }))}
+    onRowClick={({ rowData: { id: itemId } }: Row) => {
+      runtime.navigate({
+        page: `guide.topic-details`,
+        params: {
+          id: itemId,
+          topic: 'automatic-cache-updates',
+        },
+      })
+    }}
+    schema={tableSchema}
+  />
 )
 
-export default withRuntimeContext(List)
+export default withRuntimeContext(BooksTable)

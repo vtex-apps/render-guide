@@ -6,6 +6,7 @@ import topics from './components/topics'
 
 interface Props {
   params: {
+    id?: string
     topic: string
   }
 }
@@ -18,7 +19,7 @@ const Topic: React.SFC<Props> = ({ params }) => {
       <Helmet>
         <title>{topic.name}</title>
       </Helmet>
-      <topic.Component />
+      <topic.Component id={params.id} />
     </Fragment>
   ) : (
     <ErrorPage />

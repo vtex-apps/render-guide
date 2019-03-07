@@ -8,30 +8,28 @@
 import React from 'react'
 import { Query } from 'react-apollo'
 
-import PaginationController from '../../PaginationController'
+import listBooks from '../../../graphql/books.graphql'
+import totalElements from '../../../graphql/total.graphql'
 import SyncQueryData from '../../SyncQueryData'
 
-import listBooks from './graphql/books.graphql'
-import totalElements from './graphql/total.graphql'
+import PaginationController from './PaginationController'
 
 interface Props {
-  // Link to page when a row is clicked
-  linkToPage: string
   // Link to the page of adding new entry in the database
   newPage?: string
 }
 
-const Entrypoint: React.SFC<Props> = props => (
+const PaginatedList: React.SFC<Props> = ({ newPage }) => (
   <SyncQueryData prop="total" query={totalElements}>
-    {({ data: { total } }: any) => (
-      <Query query={listBooks} notifyOnNetworkStatusChange={true}>
+    {({ data: { total } }) => (
+      <Query query={listBooks} notifyOnNetworkStatusChange>
         {({ data: { books }, fetchMore, loading }) => (
           <PaginationController
-            fetchMore={fetchMore}
             books={books}
-            total={total}
+            fetchMore={fetchMore}
             loading={loading}
-            {...props}
+            newPage={newPage}
+            total={total}
           />
         )}
       </Query>
@@ -39,4 +37,4 @@ const Entrypoint: React.SFC<Props> = props => (
   </SyncQueryData>
 )
 
-export default Entrypoint
+export default PaginatedList

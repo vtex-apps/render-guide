@@ -4,33 +4,14 @@ import { RenderContextProps, withRuntimeContext } from 'vtex.render-runtime'
 import { Table } from 'vtex.styleguide'
 
 import { Book } from '../../../../../typings/custom'
-import DeleteButton from '../DeleteButton'
 
+import { tableSchema } from './consts'
 import { Row } from './typings'
-
-const tableSchema = {
-  delete: {
-    cellRenderer: ({ rowData: { id } }: Row) => <DeleteButton id={id} />,
-    title: 'Delete',
-    type: 'object',
-  },
-  properties: {
-    id: {
-      title: 'ID',
-      type: 'string',
-    },
-    name: {
-      title: 'Name',
-      type: 'string',
-    },
-  },
-}
 
 interface CustomProps {
   books: Book[]
   elementsPerPage: number
   from: number
-  linkToPage: string
   newPage: string
   next: () => void
   previous: () => void
@@ -40,11 +21,10 @@ interface CustomProps {
 
 type Props = CustomProps & RenderContextProps
 
-const PaginatedList: React.SFC<Props> = ({
+const TableWrapper: React.SFC<Props> = ({
   books,
   elementsPerPage,
   from,
-  linkToPage,
   newPage,
   next,
   previous,
@@ -53,31 +33,33 @@ const PaginatedList: React.SFC<Props> = ({
   total,
 }) => (
   <Table
-    emptyStateLabel={'Nothing to show'}
-    schema={tableSchema}
-    items={books}
-    fixFirstColumn
     density="low"
-    onRowClick={({ rowData: { id } }: Row) =>
+    emptyStateLabel="Nothing to show"
+    fixFirstColumn
+    items={books}
+    onRowClick={({ rowData: { id } }: Row) => {
       runtime.navigate({
-        page: linkToPage,
+        page: 'guide.topic-details',
         params: {
           id,
-          view: 'detail',
+          topic: 'dynamic-pagination',
         },
       })
-    }
+    }}
     pagination={{
       currentItemFrom: from,
       currentItemTo: to,
-      onNextClick: () => next(),
-      onPrevClick: () => previous(),
-      onRowsChange: (e: any) => console.log(e),
+      onNextClick: next,
+      onPrevClick: previous,
+      onRowsChange: (e: Event) => {
+        console.log(e)
+      },
       rowsOptions: [elementsPerPage],
       textOf: 'of',
       textShowRows: 'Show rows',
       totalItems: total,
     }}
+    schema={tableSchema}
     toolbar={{
       newLine: {
         handleCallback: () => runtime.navigate({ page: newPage }),
@@ -87,4 +69,4 @@ const PaginatedList: React.SFC<Props> = ({
   />
 )
 
-export default withRuntimeContext(PaginatedList)
+export default withRuntimeContext(TableWrapper)

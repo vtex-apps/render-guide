@@ -1,4 +1,4 @@
-import { Book } from '../../typings/custom'
+import { Book } from '../../../typings/custom'
 
 export const updateQuery = (
   previous: { books: Book[] },

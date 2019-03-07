@@ -4,7 +4,8 @@
 // the mutation for editing the detail.
 
 import React, { Component } from 'react'
-import { Mutation } from 'react-apollo'
+import { Mutation, MutationFn } from 'react-apollo'
+import { RenderContextProps, withRuntimeContext } from 'vtex.render-runtime'
 import { Button, Spinner } from 'vtex.styleguide'
 
 // This mutation makes automatic cache update to work. Note that
@@ -13,77 +14,103 @@ import { Button, Spinner } from 'vtex.styleguide'
 // rewrite the data in the local browser cache
 import editBook from '../graphql/editBook.graphql'
 import { Book } from '../typings/custom'
-import { parseArray, serializeArray } from '../utils/array'
 
 import Input from './Input'
 
-interface Props {
+interface CustomProps {
   // The incoming query data. Note that it can be partially
   // available in case of reading from local cache
   book: Partial<Book>
-  // Loading state of the query that loads the full book data
-  loading?: boolean
 }
+
+type Props = CustomProps & RenderContextProps
 
 // The state keeps track from the altered user input
 interface State {
-  name?: Book['name']
-  authors?: Book['authors']
+  formData: Partial<Book>
+  isLoading: boolean
 }
 
 class DetailEditor extends Component<Props, State> {
-  // This method serves to initialize the input with available data in props
-  public static getDerivedStateFromProps = (props: Props, state: State) => ({
-    ...(props && props.book),
-    ...state,
-  })
+  constructor(props: Props) {
+    super(props)
 
-  public render = () => (
-    <Mutation mutation={editBook}>
-      {(save, { loading: saving }) => (
-        <div className="w-40">
-          <div className="mb5">
-            <Input
-              loading={this.props.loading}
-              label="ID"
-              value={this.props.book.id}
-              disabled
+    this.state = {
+      formData: props.book,
+      isLoading: false,
+    }
+  }
+
+  public render() {
+    return (
+      <Mutation mutation={editBook}>
+        {(save, { loading: isSaving }) => (
+          <form>
+            <div className="w-40">
+              <div className="mb5">
+                <Input disabled label="ID" value={this.props.book.id} />
+              </div>
+              <div className="mb5">
+                <Input
+                  label="Name"
+                  onChange={this.handleNameChange}
+                  value={this.state.formData.name}
+                />
+              </div>
+              <span className="mr4">
+                {isSaving || this.state.isLoading ? (
+                  <Spinner />
+                ) : (
+                  <Button
+                    onClick={this.getSaveHandler(save)}
+                    variation="primary"
+                  >
+                    Save
+                  </Button>
+                )}
+              </span>
+            </div>
+            <button
+              className="dn"
+              onClick={this.getSaveHandler(save)}
+              type="submit"
             />
-          </div>
-          <div className="mb5">
-            <Input
-              label="Name"
-              value={this.state.name}
-              loading={this.props.loading}
-              onChange={(e: any) => this.setState({ name: e.target.value })}
-            />
-          </div>
-          <div className="mb5">
-            <Input
-              label="Authors"
-              value={serializeArray(this.state.authors)}
-              loading={this.props.loading}
-              onChange={(e: any) =>
-                this.setState({ authors: parseArray(e.target.value) })
-              }
-            />
-          </div>
-          <span className="mr4">
-            {!saving ? (
-              <Button
-                variation="primary"
-                onClick={() => save({ variables: { book: { ...this.state } } })}
-              >
-                Save
-              </Button>
-            ) : (
-              <Spinner />
-            )}
-          </span>
-        </div>
-      )}
-    </Mutation>
-  )
+          </form>
+        )}
+      </Mutation>
+    )
+  }
+
+  private getSaveHandler = (save: MutationFn) => () => {
+    const {
+      book: { id },
+      runtime,
+    } = this.props
+
+    this.setState({ isLoading: true }, async () => {
+      try {
+        await save({
+          variables: {
+            book: this.state.formData,
+            id,
+          },
+        })
+
+        runtime.navigate({
+          page: 'guide.topic',
+          params: { topic: 'automatic-cache-updates' },
+        })
+      } catch (err) {
+        console.log(err)
+
+        this.setState({ isLoading: false })
+      }
+    })
+  }
+
+  private handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    this.setState({ formData: { name: e.target.value } })
+  }
 }
 
-export default DetailEditor
+export default withRuntimeContext(DetailEditor)
