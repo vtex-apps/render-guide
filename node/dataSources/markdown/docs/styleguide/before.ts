@@ -18,9 +18,9 @@ export default `
   import { Button } from 'vtex.styleguide'
 
   const MyAwesomeComponent: React.SFC = () => (
-    <Button>Click-me</Button>
+    <Button>Click me</Button>
   )
   \`\`\`
 
-  The code above is shown running bellow:
+  The code above is shown running below:
 `

@@ -6,7 +6,7 @@ export default `
 
   This technique uses [Apollo Client's InMemory cache](https://www.apollographql.com/docs/react/advanced/caching.html#smooth-scroll-top) and enables a greater user experience by reusing the data already present in the browser's local cache for making content preview
 
-  This example shows how this feature can improve the user's experience. It starts by querying a book list, which is shown bellow.
+  This example shows how this feature can improve the user's experience. It starts by querying a book list, which is shown below.
 
   Clicking in a row will take you to the detail page. The detail page needs more data than the available in the list, like the author's name.
 
