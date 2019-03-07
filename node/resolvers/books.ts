@@ -1,5 +1,3 @@
-import { Context } from '../typings/custom'
-
 interface Args {
   from: number
   to: number
