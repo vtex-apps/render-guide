@@ -21,6 +21,7 @@ interface CustomProps {
   // The incoming query data. Note that it can be partially
   // available in case of reading from local cache
   book: Partial<Book>
+  topicPage: string
 }
 
 type Props = CustomProps & RenderContextProps
@@ -31,7 +32,7 @@ interface State {
   isLoading: boolean
 }
 
-class DetailEditor extends Component<Props, State> {
+class DetailsEditor extends Component<Props, State> {
   constructor(props: Props) {
     super(props)
 
@@ -85,6 +86,7 @@ class DetailEditor extends Component<Props, State> {
     const {
       book: { id },
       runtime,
+      topicPage,
     } = this.props
 
     this.setState({ isLoading: true }, async () => {
@@ -98,7 +100,7 @@ class DetailEditor extends Component<Props, State> {
 
         runtime.navigate({
           page: 'guide.topic',
-          params: { topic: 'automatic-cache-updates' },
+          params: { topic: topicPage },
         })
       } catch (err) {
         console.log(err)
@@ -113,4 +115,4 @@ class DetailEditor extends Component<Props, State> {
   }
 }
 
-export default withRuntimeContext(DetailEditor)
+export default withRuntimeContext(DetailsEditor)

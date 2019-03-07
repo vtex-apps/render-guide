@@ -1,28 +1,33 @@
-// This component renders the detail editor with partial data available
-// in apollo cache.
-import React from 'react'
-import { Query } from 'react-apollo'
+import React, { Fragment } from 'react'
+import { Spinner } from 'vtex.styleguide'
 
-import bookQuery from '../../../graphql/book.graphql'
-import DetailEditor from '../../DetailEditor'
+import listBooks from '../../../graphql/books.graphql'
+import BooksTable from '../../BooksTable'
+import MarkdownBlock from '../../MarkdownBlock'
+import SyncQueryData from '../../SyncQueryData'
 
-import { readFromApolloCache } from './utils'
+import BookDetailsEditor from './BookDetailsEditor'
 
 interface Props {
-  itemId: string
+  id?: string
 }
 
-// Queries the data for the full book. While the result is loadig, a read from
-// apollo cache takes place and this fragment is used for the detail editor
-const PreviewWithCachedData: React.SFC<Props> = ({ itemId }) => (
-  <Query query={bookQuery} variables={{ id: itemId }}>
-    {({ client, data, loading }) => (
-      <DetailEditor
-        book={loading ? readFromApolloCache(client, itemId) : data.book}
-        loading={loading}
-      />
-    )}
-  </Query>
+const PreviewWithCachedData: React.SFC<Props> = ({ id }) => (
+  <Fragment>
+    <MarkdownBlock source="preview-with-cached-data/before" />
+    <SyncQueryData query={listBooks} prop="books">
+      {({ data: { books }, loading }) =>
+        loading ? (
+          <Spinner />
+        ) : id ? (
+          <BookDetailsEditor id={id} />
+        ) : (
+          <BooksTable items={books} topicPage="preview-with-cached-data" />
+        )
+      }
+    </SyncQueryData>
+    <MarkdownBlock source="preview-with-cached-data/after" />
+  </Fragment>
 )
 
 export default PreviewWithCachedData

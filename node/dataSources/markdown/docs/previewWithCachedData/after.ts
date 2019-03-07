@@ -1,9 +1,9 @@
 export default `
   Cool! But how is it coded?
 
-  The implementation can be seen in \`DetailWithPreview.tsx\` component.
+  The implementation can be seen in \`PreviewWithCachedData\` component.
 
-  The main ideia is to use the book query's loading state as a switcher between using the cached data or reading from the incomming query data.
+  The main ideia is to use the book query's loading state as a switcher between using the cached data or reading from the incoming query data.
 
   If the query is in loading state, the function \`readFromApolloCache\` is executed. It reads a Fragment from the Apollo Client's InMemory cache and the renderization occurs as usual.
 

@@ -1,5 +1,5 @@
 export default `
-  The most important part of the pagination implementation is coded in the \`paginationController.tsx\` component.
+  The most important part of the pagination implementation is coded in the \`PaginationController\` component.
 
   The pagination starts by querying the total number of items and the first 5 items of the list.
 

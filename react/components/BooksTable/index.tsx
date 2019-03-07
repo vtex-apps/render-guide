@@ -10,28 +10,29 @@ import { Table } from 'vtex.styleguide'
 // Here is an important part of Automatic Cache Update. For updating
 // the cache we first need to query our list, with each element having
 // a cacheId that will uniquely identify it in the local browser's cache
-import { Book } from '../../../../typings/custom'
+import { Book } from '../../typings/custom'
 
 import { tableSchema } from './consts'
 import { Row } from './typings'
 
 interface CustomProps {
   items: Book[]
+  topicPage: string
 }
 
 type Props = CustomProps & RenderContextProps
 
-const BooksTable: React.SFC<Props> = ({ items, runtime }) => (
+const BooksTable: React.SFC<Props> = ({ items, runtime, topicPage }) => (
   <Table
     density="low"
     fullWidth
     items={items.map((item: Book) => ({ id: item.id, name: item.name }))}
     onRowClick={({ rowData: { id: itemId } }: Row) => {
       runtime.navigate({
-        page: `guide.topic-details`,
+        page: 'guide.topic-details',
         params: {
           id: itemId,
-          topic: 'automatic-cache-updates',
+          topic: topicPage,
         },
       })
     }}

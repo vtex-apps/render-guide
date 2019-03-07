@@ -1,5 +1,5 @@
 export default `
-  The most important components in this example are the \`deleteButton.tsx\` and \`NewElement.tsx\`, that handle deletion and creation of a list element respectively.
+  The most important components in this example are the \`DeleteButton\` and \`NewElement\`, that handle deletion and creation of a list element respectively.
 
   Their code is really similar and takes advantage of the React Apollo Mutation's \`update\` method for updating the list in Apollo Client's InMemory cache.
 
