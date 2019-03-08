@@ -1,5 +1,5 @@
 export default `
-  # Pagination With Dynamic Items
+  # Dynamic Pagination
 
   In this example you will learn how to create a dinamic, offset-based, pagination, i.e. how to paginate a list of items that DO support adding and removing an elements from the list.
 

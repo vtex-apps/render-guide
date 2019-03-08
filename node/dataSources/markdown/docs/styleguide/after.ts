@@ -1,3 +1,3 @@
 export default `
-  > Note: to know more about the available components, visit the [**Styleguide** page](styleguide.vtex.com)
+  To know more about the available components, visit the [**Styleguide** page](styleguide.vtex.com).
 `
