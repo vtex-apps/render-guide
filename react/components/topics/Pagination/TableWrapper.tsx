@@ -3,7 +3,7 @@ import React from 'react'
 import { RenderContextProps, withRuntimeContext } from 'vtex.render-runtime'
 import { Table } from 'vtex.styleguide'
 
-import { Book } from '../../../../../typings/custom'
+import { Book } from '../../../typings/custom'
 
 import { tableSchema } from './consts'
 import { Row } from './typings'

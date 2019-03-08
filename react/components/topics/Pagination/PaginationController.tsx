@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import { ExtensionPoint } from 'vtex.render-runtime'
 import { Spinner } from 'vtex.styleguide'
 
 import { Book } from '../../../typings/custom'
 
+import TableWrapper from './TableWrapper'
 import { updateQuery } from './utils'
 
 interface Props {
@@ -55,12 +55,12 @@ class PaginationController extends Component<Props, State> {
     }
 
     return (
-      <ExtensionPoint
+      <TableWrapper
         books={books.slice(from, to)}
         currentPage={this.state.currentPage}
         elementsPerPage={this.state.elementsPerPage}
         from={from}
-        id="wrapper"
+        id="tableWrapper"
         newPage={newPage}
         next={this.getPageChangeHandler(nextPage)}
         previous={this.getPageChangeHandler(previousPage)}
