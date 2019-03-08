@@ -1,5 +1,4 @@
 import React, { Fragment } from 'react'
-import { Spinner } from 'vtex.styleguide'
 
 import listBooks from '../../../graphql/books.graphql'
 import { Book } from '../../../typings/custom'
@@ -20,11 +19,10 @@ const AutomaticCacheUpdates: React.SFC<Props> = ({ id }) => {
       <MarkdownBlock source="automatic-cache-updates/before" />
       <SyncQueryData prop="books" query={listBooks}>
         {({ data: { books }, loading }) =>
-          loading ? (
-            <Spinner />
-          ) : id ? (
+          id ? (
             <DetailsEditor
               book={books.find((book: Book) => book.id === id)}
+              isLoading={loading}
               topicPage={topicPage}
             />
           ) : (

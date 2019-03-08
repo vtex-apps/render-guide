@@ -15,7 +15,7 @@ interface Props {
 // This component renders a markdown block synchronously.
 const MarkdownBlock: React.SFC<Props> = ({ source }) => (
   <SyncQueryData query={markdownQuery} variables={{ id: source }} prop="source">
-    {({ data: { source: markdownSource } }: any) =>
+    {({ data: { source: markdownSource } }) =>
       markdownSource ? (
         <div className="lh-copy">
           <Markdown

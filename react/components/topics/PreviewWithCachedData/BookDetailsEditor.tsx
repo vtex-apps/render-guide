@@ -19,7 +19,7 @@ const BookDetailsEditor: React.SFC<Props> = ({ id }) => (
     {({ client, data, loading }) => (
       <DetailsEditor
         book={loading ? readFromApolloCache(client, id) : data.book}
-        loading={loading}
+        isLoading={loading}
         topicPage="preview-with-cached-data"
       />
     )}

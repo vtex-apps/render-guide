@@ -1,8 +1,8 @@
 import { MutationFn, MutationUpdaterFn } from 'react-apollo'
 
 import { CachedBookList, CachedTotal } from '../../../../../../typings/custom'
-import listQuery from '../../../../../graphql/books.graphql'
-import totalQuery from '../../../../../graphql/total.graphql'
+import listQuery from '../../../graphql/books.graphql'
+import totalQuery from '../../../graphql/total.graphql'
 
 export const isValidIndex = <T>(array: T[], index: number) =>
   Array.isArray(array) && index > -1

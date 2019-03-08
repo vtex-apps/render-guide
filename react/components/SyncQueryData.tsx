@@ -1,6 +1,5 @@
 import React from 'react'
 import { Query } from 'react-apollo'
-import { Spinner } from 'vtex.styleguide'
 
 interface Props {
   children: (queryResult: any) => JSX.Element
@@ -26,11 +25,9 @@ const SyncQueryData = ({
     variables={variables}
   >
     {({ data, fetchMore, loading }) =>
-      loading ? (
-        <Spinner />
-      ) : children && data && data[prop] !== undefined ? (
-        children({ data, fetchMore })
-      ) : null
+      children && data && data[prop] !== undefined
+        ? children({ data, fetchMore, loading })
+        : null
     }
   </Query>
 )

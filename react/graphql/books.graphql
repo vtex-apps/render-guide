@@ -1,7 +1,8 @@
 query Books($from: Int = 0, $to: Int = 5) {
   books(from: $from, to: $to) {
+    authors
+    cacheId
     id
     name
-    cacheId
   }
 }

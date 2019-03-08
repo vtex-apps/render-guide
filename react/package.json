@@ -3,6 +3,7 @@
     "apollo-client": "^2.4.7",
     "graphql": "^14.0.2",
     "highlight.js": "^9.13.1",
+    "lodash.isequal": "^4.5.0",
     "react": "^16.6.3",
     "react-apollo": "^2.3.1",
     "react-dom": "^16.0.0",
@@ -10,6 +11,7 @@
   },
   "devDependencies": {
     "@types/highlight.js": "^9.12.3",
+    "@types/lodash.isequal": "^4.5.5",
     "@types/node": "^10.12.17",
     "@types/react": "^16.7.17",
     "tslint": "^5.12.0",

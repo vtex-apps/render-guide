@@ -16,17 +16,24 @@ import { tableSchema } from './consts'
 import { Row } from './typings'
 
 interface CustomProps {
+  isLoading: boolean
   items: Book[]
   topicPage: string
 }
 
 type Props = CustomProps & RenderContextProps
 
-const BooksTable: React.SFC<Props> = ({ items, runtime, topicPage }) => (
+const BooksTable: React.SFC<Props> = ({
+  isLoading,
+  items,
+  runtime,
+  topicPage,
+}) => (
   <Table
     density="low"
     fullWidth
     items={items.map((item: Book) => ({ id: item.id, name: item.name }))}
+    loading={isLoading}
     onRowClick={({ rowData: { id: itemId } }: Row) => {
       runtime.navigate({
         page: 'guide.topic-details',
