@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Spinner } from 'vtex.styleguide'
 
 import { Book } from '../../../typings/custom'
 
@@ -11,6 +10,7 @@ interface Props {
   fetchMore: (options: any) => Promise<any>
   loading?: boolean
   newPage?: string
+  topicPage: string
   total: number
 }
 
@@ -34,7 +34,7 @@ class PaginationController extends Component<Props, State> {
   }
 
   public render = () => {
-    const { books, loading, newPage, total } = this.props
+    const { books, loading, newPage, topicPage, total } = this.props
 
     const from = this.state.currentPage * this.state.elementsPerPage
 
@@ -50,10 +50,6 @@ class PaginationController extends Component<Props, State> {
     const previousPage =
       totalPages - 1 - ((totalPages - this.state.currentPage) % totalPages)
 
-    if (loading) {
-      return <Spinner />
-    }
-
     return (
       <TableWrapper
         books={books.slice(from, to)}
@@ -61,10 +57,12 @@ class PaginationController extends Component<Props, State> {
         elementsPerPage={this.state.elementsPerPage}
         from={from}
         id="tableWrapper"
+        loading={loading}
         newPage={newPage}
         next={this.getPageChangeHandler(nextPage)}
         previous={this.getPageChangeHandler(previousPage)}
         to={to}
+        topicPage={topicPage}
         total={total}
       />
     )

@@ -12,10 +12,13 @@ interface CustomProps {
   books: Book[]
   elementsPerPage: number
   from: number
+  loading: boolean
   newPage: string
   next: () => void
   previous: () => void
+  shouldEnableCreation?: boolean
   to: number
+  topicPage: string
   total: number
 }
 
@@ -25,24 +28,29 @@ const TableWrapper: React.SFC<Props> = ({
   books,
   elementsPerPage,
   from,
+  loading,
   newPage,
   next,
   previous,
   runtime,
+  shouldEnableCreation,
   to,
+  topicPage,
   total,
 }) => (
   <Table
     density="low"
     emptyStateLabel="Nothing to show"
     fixFirstColumn
+    fullWidth
     items={books}
+    loading={loading}
     onRowClick={({ rowData: { id } }: Row) => {
       runtime.navigate({
         page: 'guide.topic-details',
         params: {
           id,
-          topic: 'dynamic-pagination',
+          topic: topicPage,
         },
       })
     }}
@@ -60,12 +68,16 @@ const TableWrapper: React.SFC<Props> = ({
       totalItems: total,
     }}
     schema={tableSchema}
-    toolbar={{
-      newLine: {
-        handleCallback: () => runtime.navigate({ page: newPage }),
-        label: 'New',
-      },
-    }}
+    toolbar={
+      shouldEnableCreation
+        ? {
+            newLine: {
+              handleCallback: () => runtime.navigate({ page: newPage }),
+              label: 'New',
+            },
+          }
+        : undefined
+    }
   />
 )
 

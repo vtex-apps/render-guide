@@ -17,9 +17,10 @@ import PaginationController from './PaginationController'
 interface Props {
   // Link to the page of adding new entry in the database
   newPage?: string
+  topicPage: string
 }
 
-const PaginatedList: React.SFC<Props> = ({ newPage }) => (
+const PaginatedList: React.SFC<Props> = ({ newPage, topicPage }) => (
   <SyncQueryData prop="total" query={totalElements}>
     {({ data: { total } }) => (
       <Query query={listBooks} notifyOnNetworkStatusChange>
@@ -29,6 +30,7 @@ const PaginatedList: React.SFC<Props> = ({ newPage }) => (
             fetchMore={fetchMore}
             loading={loading}
             newPage={newPage}
+            topicPage={topicPage}
             total={total}
           />
         )}
