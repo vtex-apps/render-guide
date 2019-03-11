@@ -2,8 +2,6 @@
 // available before the loading state is finished, the
 // data is previewed using the Input component. Also, it makes
 // the mutation for editing the detail.
-
-import isEqual from 'lodash.isequal'
 import React, { Component } from 'react'
 import { Mutation, MutationFn } from 'react-apollo'
 import { RenderContextProps, withRuntimeContext } from 'vtex.render-runtime'
@@ -35,14 +33,6 @@ interface State {
 }
 
 class DetailsEditor extends Component<Props, State> {
-  public static getDerivedStateFromProps(nextProps: Props, prevState: State) {
-    if (!isEqual(nextProps.book, prevState.formData)) {
-      return { ...prevState, formData: nextProps.book }
-    }
-
-    return null
-  }
-
   constructor(props: Props) {
     super(props)
 
