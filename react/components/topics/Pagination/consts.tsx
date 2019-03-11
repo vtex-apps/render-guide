@@ -4,11 +4,6 @@ import DeleteButton from './DeleteButton'
 import { Row } from './typings'
 
 export const tableSchema = {
-  delete: {
-    cellRenderer: ({ rowData: { id } }: Row) => <DeleteButton id={id} />,
-    title: 'Delete',
-    type: 'object',
-  },
   properties: {
     id: {
       title: 'ID',
@@ -17,6 +12,12 @@ export const tableSchema = {
     name: {
       title: 'Name',
       type: 'string',
+    },
+    /* tslint:disable-next-line */
+    delete: {
+      cellRenderer: ({ rowData: { id } }: Row) => <DeleteButton id={id} />,
+      title: 'Actions',
+      type: 'object',
     },
   },
 }

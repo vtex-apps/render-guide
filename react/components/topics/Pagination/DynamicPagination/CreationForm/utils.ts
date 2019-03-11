@@ -1,11 +1,10 @@
 import { MutationUpdaterFn } from 'apollo-client'
-import { RenderContextProps } from 'vtex.render-runtime'
 
+import listQuery from '../../../../../graphql/books.graphql'
+import totalQuery from '../../../../../graphql/total.graphql'
 import { CachedBookList, CachedTotal } from '../../../../../typings/custom'
-import listQuery from '../../../graphql/books.graphql'
-import totalQuery from '../../../graphql/total.graphql'
 
-export const updateCache = (props: RenderContextProps): MutationUpdaterFn => (
+export const updateCache: MutationUpdaterFn = (
   cache,
   { data: { newBook } }
 ) => {
@@ -13,7 +12,9 @@ export const updateCache = (props: RenderContextProps): MutationUpdaterFn => (
   // This happens when the user first visits this page and then go to the listing page
   try {
     // Here we read the number of elements of the listing
-    const total = cache.readQuery<CachedTotal>({ query: totalQuery })
+    const totalData = cache.readQuery<CachedTotal>({ query: totalQuery })
+
+    const total = totalData && totalData.total
 
     // Here we read the list with the new element
     const list = cache.readQuery<CachedBookList>({ query: listQuery })
@@ -21,22 +22,22 @@ export const updateCache = (props: RenderContextProps): MutationUpdaterFn => (
     const books = list && list.books
 
     // Now we update both queries at the same time
-    if (total != null && Array.isArray(books)) {
-      books.unshift(newBook)
+    if (total && books) {
+      const updatedBooks = [newBook, ...books]
 
-      cache.writeQuery({
-        data: list,
+      cache.writeQuery<CachedBookList>({
+        data: {
+          books: updatedBooks,
+        },
         query: listQuery,
       })
 
-      total.total += 1
-      cache.writeQuery({
-        data: total,
+      cache.writeQuery<CachedTotal>({
+        data: {
+          total: total + 1,
+        },
         query: totalQuery,
       })
-
-      // We end up by navigating back to the list if sucess
-      props.runtime.navigate({ page: 'guide.dynamic-pagination-list' })
     }
   } catch (err) {
     console.log(err)

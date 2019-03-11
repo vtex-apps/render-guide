@@ -9,10 +9,11 @@ import PaginatedList from './PaginatedList'
 
 interface Props {
   id?: string
+  newPage?: string
   type: 'dynamic' | 'static'
 }
 
-const Pagination: React.SFC<Props> = ({ id, type }) => {
+const Pagination: React.SFC<Props> = ({ id, newPage, type }) => {
   const topicPage = `${type}-pagination`
 
   return (
@@ -25,7 +26,7 @@ const Pagination: React.SFC<Props> = ({ id, type }) => {
             topicPage={topicPage}
           />
         ) : (
-          <PaginatedList topicPage={topicPage} />
+          <PaginatedList newPage={newPage} topicPage={topicPage} />
         )
       }
     </SyncQueryData>

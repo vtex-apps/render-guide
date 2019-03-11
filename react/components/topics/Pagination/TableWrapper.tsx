@@ -16,7 +16,6 @@ interface CustomProps {
   newPage: string
   next: () => void
   previous: () => void
-  shouldEnableCreation?: boolean
   to: number
   topicPage: string
   total: number
@@ -33,7 +32,6 @@ const TableWrapper: React.SFC<Props> = ({
   next,
   previous,
   runtime,
-  shouldEnableCreation,
   to,
   topicPage,
   total,
@@ -69,10 +67,14 @@ const TableWrapper: React.SFC<Props> = ({
     }}
     schema={tableSchema}
     toolbar={
-      shouldEnableCreation
+      newPage
         ? {
             newLine: {
-              handleCallback: () => runtime.navigate({ page: newPage }),
+              handleCallback: () =>
+                runtime.navigate({
+                  page: newPage,
+                  params: { id: 'new', topic: 'dynamic-pagination' },
+                }),
               label: 'New',
             },
           }

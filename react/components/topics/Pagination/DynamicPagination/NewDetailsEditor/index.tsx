@@ -1,65 +1,48 @@
-// This component handles the detail input. If the data is
-// available before the loading state is finished, the
-// data is previewed using the Input component. Also, it makes
-// the mutation for editing the detail.
+// This component handles the detail input. Also, it makes
+// the mutation for creating a new detail.
+
 import React, { Component } from 'react'
 import { Mutation, MutationFn } from 'react-apollo'
 import { RenderContextProps, withRuntimeContext } from 'vtex.render-runtime'
 import { Button } from 'vtex.styleguide'
 
-// This mutation makes automatic cache update to work. Note that
-// it queries all changed data from the server back (with cacheId)
-// so that when the altered data arrives, it can automatically
-// rewrite the data in the local browser cache
-import editBook from '../graphql/editBook.graphql'
-import { Book } from '../typings/custom'
-import { parseArray, serializeArray } from '../utils/array'
+import newMutation from '../../../../../graphql/newBook.graphql'
+import { Book } from '../../../../../typings/custom'
+import { parseArray, serializeArray } from '../../../../../utils/array'
+import Input from '../../../../Input'
 
-import Input from './Input'
-
-interface CustomProps {
-  // The incoming query data. Note that it can be partially
-  // available in case of reading from local cache
-  book: Partial<Book>
-  isLoading: boolean
-  topicPage: string
-}
-
-type Props = CustomProps & RenderContextProps
+import { updateCache } from './utils'
 
 // The state keeps track from the altered user input
 interface State {
-  formData: Partial<Book>
+  formData: {
+    authors: Book['authors']
+    name: Book['name']
+  }
 }
 
-class DetailsEditor extends Component<Props, State> {
-  constructor(props: Props) {
+class NewDetailsEditor extends Component<RenderContextProps, State> {
+  constructor(props: RenderContextProps) {
     super(props)
 
     this.state = {
-      formData: props.book,
+      formData: {
+        authors: [],
+        name: '',
+      },
     }
   }
 
   public render() {
     return (
-      <Mutation mutation={editBook}>
+      <Mutation mutation={newMutation} update={updateCache(this.props)}>
         {(save, { loading: isSaving }) => (
           <form>
             <div className="w-40">
               <div className="mb5">
                 <Input
-                  disabled
-                  label="ID"
-                  loading={this.props.isLoading}
-                  value={this.props.book.id}
-                />
-              </div>
-              <div className="mb5">
-                <Input
                   disabled={isSaving}
                   label="Name"
-                  loading={this.props.isLoading}
                   onChange={this.handleNameChange}
                   value={this.state.formData.name}
                 />
@@ -68,14 +51,12 @@ class DetailsEditor extends Component<Props, State> {
                 <Input
                   disabled={isSaving}
                   label="Authors"
-                  loading={this.props.isLoading}
                   onChange={this.handleAuthorsChange}
                   value={serializeArray(this.state.formData.authors)}
                 />
               </div>
               <span className="mr4">
                 <Button
-                  disabled={this.props.isLoading}
                   onClick={this.getSaveHandler(save)}
                   isLoading={isSaving}
                   variation="primary"
@@ -95,28 +76,19 @@ class DetailsEditor extends Component<Props, State> {
     )
   }
 
-  private getSaveHandler = (save: MutationFn) => async (
-    e: React.MouseEvent<HTMLButtonElement>
-  ) => {
-    const {
-      book: { id },
-      runtime,
-      topicPage,
-    } = this.props
-
-    e.preventDefault()
+  private getSaveHandler = (save: MutationFn) => async () => {
+    const { runtime } = this.props
 
     try {
       await save({
         variables: {
           book: this.state.formData,
-          id,
         },
       })
 
       runtime.navigate({
         page: 'guide.topic',
-        params: { topic: topicPage },
+        params: { topic: 'dynamic-pagination' },
       })
     } catch (err) {
       console.log(err)
@@ -142,4 +114,4 @@ class DetailsEditor extends Component<Props, State> {
   }
 }
 
-export default withRuntimeContext(DetailsEditor)
+export default withRuntimeContext(NewDetailsEditor)

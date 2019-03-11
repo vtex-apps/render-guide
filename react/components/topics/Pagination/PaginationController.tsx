@@ -55,7 +55,7 @@ class PaginationController extends Component<Props, State> {
         books={books.slice(from, to)}
         currentPage={this.state.currentPage}
         elementsPerPage={this.state.elementsPerPage}
-        from={from}
+        from={from + 1}
         id="tableWrapper"
         loading={loading}
         newPage={newPage}
@@ -75,7 +75,7 @@ class PaginationController extends Component<Props, State> {
 
     const to = Math.min((newPage + 1) * this.state.elementsPerPage, total)
 
-    if (books.length > 0) {
+    if (books.slice(from, to).length !== to - from) {
       await fetchMore({
         updateQuery,
         variables: { from, to },
