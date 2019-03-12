@@ -21,7 +21,7 @@ interface State {
   }
 }
 
-class NewDetailsEditor extends Component<RenderContextProps, State> {
+class CreationForm extends Component<RenderContextProps, State> {
   constructor(props: RenderContextProps) {
     super(props)
 
@@ -35,12 +35,13 @@ class NewDetailsEditor extends Component<RenderContextProps, State> {
 
   public render() {
     return (
-      <Mutation mutation={newMutation} update={updateCache(this.props)}>
+      <Mutation mutation={newMutation} update={updateCache}>
         {(save, { loading: isSaving }) => (
           <form>
             <div className="w-40">
               <div className="mb5">
                 <Input
+                  autoFocus
                   disabled={isSaving}
                   label="Name"
                   onChange={this.handleNameChange}
@@ -76,8 +77,12 @@ class NewDetailsEditor extends Component<RenderContextProps, State> {
     )
   }
 
-  private getSaveHandler = (save: MutationFn) => async () => {
+  private getSaveHandler = (save: MutationFn) => async (
+    e: React.MouseEvent<HTMLButtonElement>
+  ) => {
     const { runtime } = this.props
+
+    e.preventDefault()
 
     try {
       await save({
@@ -114,4 +119,4 @@ class NewDetailsEditor extends Component<RenderContextProps, State> {
   }
 }
 
-export default withRuntimeContext(NewDetailsEditor)
+export default withRuntimeContext(CreationForm)

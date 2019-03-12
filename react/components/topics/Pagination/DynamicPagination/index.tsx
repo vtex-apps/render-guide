@@ -3,7 +3,7 @@ import React, { Fragment } from 'react'
 import Pagination from '..'
 import MarkdownBlock from '../../../MarkdownBlock'
 
-import NewDetailsEditor from './NewDetailsEditor'
+import CreationForm from './CreationForm'
 
 interface Props {
   id?: string
@@ -13,7 +13,7 @@ const DynamicPagination: React.SFC<Props> = ({ id }) => (
   <Fragment>
     <MarkdownBlock source="dynamic-pagination/before" />
     {id === 'new' ? (
-      <NewDetailsEditor />
+      <CreationForm />
     ) : (
       <Pagination id={id} newPage="guide.topic-details" type="dynamic" />
     )}
