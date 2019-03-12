@@ -8,9 +8,9 @@
 import React from 'react'
 import { Query } from 'react-apollo'
 
-import listBooks from '../../../graphql/books.graphql'
-import totalElements from '../../../graphql/total.graphql'
-import SyncQueryData from '../../SyncQueryData'
+import listBooks from '../../graphql/books.graphql'
+import totalElements from '../../graphql/total.graphql'
+import SyncQueryData from '../SyncQueryData'
 
 import PaginationController from './PaginationController'
 

@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 
-import Pagination from '..'
-import MarkdownBlock from '../../../MarkdownBlock'
+import MarkdownBlock from '../../MarkdownBlock'
+import Pagination from '../../Pagination'
 
 interface Props {
   id?: string

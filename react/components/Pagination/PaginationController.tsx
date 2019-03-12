@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import { Book } from '../../../typings/custom'
+import { Book } from '../../typings/custom'
 
 import TableWrapper from './TableWrapper'
 import { updateQuery } from './utils'

@@ -1,11 +1,11 @@
 import { Topic } from '../../typings/custom'
 
 import AutomaticCacheUpdates from './AutomaticCacheUpdates'
+import DynamicPagination from './DynamicPagination'
 import ExtensionPoints from './ExtensionPoints'
 import Internationalization from './Internationalization'
-import DynamicPagination from './Pagination/DynamicPagination'
-import StaticPagination from './Pagination/StaticPagination'
 import PreviewWithCachedData from './PreviewWithCachedData'
+import StaticPagination from './StaticPagination'
 import Styleguide from './Styleguide'
 
 const topics: Topic[] = [

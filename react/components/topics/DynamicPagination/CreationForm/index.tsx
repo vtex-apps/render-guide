@@ -6,10 +6,10 @@ import { Mutation, MutationFn } from 'react-apollo'
 import { RenderContextProps, withRuntimeContext } from 'vtex.render-runtime'
 import { Button } from 'vtex.styleguide'
 
-import newMutation from '../../../../../graphql/newBook.graphql'
-import { Book } from '../../../../../typings/custom'
-import { parseArray, serializeArray } from '../../../../../utils/array'
-import Input from '../../../../Input'
+import newMutation from '../../../../graphql/newBook.graphql'
+import { Book } from '../../../../typings/custom'
+import { parseArray, serializeArray } from '../../../../utils/array'
+import Input from '../../../Input'
 
 import { updateCache } from './utils'
 

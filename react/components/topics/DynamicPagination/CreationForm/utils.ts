@@ -1,8 +1,8 @@
 import { MutationUpdaterFn } from 'apollo-client'
 
-import listQuery from '../../../../../graphql/books.graphql'
-import totalQuery from '../../../../../graphql/total.graphql'
-import { CachedBookList, CachedTotal } from '../../../../../typings/custom'
+import listQuery from '../../../../graphql/books.graphql'
+import totalQuery from '../../../../graphql/total.graphql'
+import { CachedBookList, CachedTotal } from '../../../../typings/custom'
 
 export const updateCache: MutationUpdaterFn = (
   cache,
@@ -27,6 +27,7 @@ export const updateCache: MutationUpdaterFn = (
 
       cache.writeQuery<CachedBookList>({
         data: {
+          ...list,
           books: updatedBooks,
         },
         query: listQuery,
@@ -34,12 +35,13 @@ export const updateCache: MutationUpdaterFn = (
 
       cache.writeQuery<CachedTotal>({
         data: {
+          ...totalData,
           total: total + 1,
         },
         query: totalQuery,
       })
     }
   } catch (err) {
-    console.log(err)
+    console.log('No cache found.')
   }
 }

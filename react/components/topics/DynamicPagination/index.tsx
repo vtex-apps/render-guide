@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 
-import Pagination from '..'
-import MarkdownBlock from '../../../MarkdownBlock'
+import MarkdownBlock from '../../MarkdownBlock'
+import Pagination from '../../Pagination'
 
 import CreationForm from './CreationForm'
 
@@ -15,7 +15,7 @@ const DynamicPagination: React.SFC<Props> = ({ id }) => (
     {id === 'new' ? (
       <CreationForm />
     ) : (
-      <Pagination id={id} newPage="guide.topic-details" type="dynamic" />
+      <Pagination hasDelete id={id} newPage="guide.topic-details" type="dynamic" />
     )}
     <MarkdownBlock source="dynamic-pagination/after" />
   </Fragment>
