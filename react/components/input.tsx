@@ -7,6 +7,7 @@ import React from 'react'
 import { Input as StyleguideInput, Spinner } from 'vtex.styleguide'
 
 interface Props {
+  autoFocus?: boolean
   loading?: boolean
   label: string
   value?: string
@@ -15,6 +16,7 @@ interface Props {
 }
 
 const Input: React.SFC<Props> = ({
+  autoFocus,
   loading,
   label,
   value,
@@ -23,6 +25,7 @@ const Input: React.SFC<Props> = ({
 }) =>
   value !== undefined ? (
     <StyleguideInput
+      autoFocus={autoFocus}
       disabled={disabled || loading}
       label={label}
       value={value}
