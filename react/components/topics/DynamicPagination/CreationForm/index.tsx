@@ -56,7 +56,7 @@ class CreationForm extends Component<RenderContextProps, State> {
                   value={serializeArray(this.state.formData.authors)}
                 />
               </div>
-              <span className="mr4">
+              <div className="flex justify-end">
                 <Button
                   onClick={this.getSaveHandler(save)}
                   isLoading={isSaving}
@@ -64,7 +64,7 @@ class CreationForm extends Component<RenderContextProps, State> {
                 >
                   Save
                 </Button>
-              </span>
+              </div>
               <button
                 className="dn"
                 onClick={this.getSaveHandler(save)}
