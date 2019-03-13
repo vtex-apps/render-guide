@@ -1,23 +1,25 @@
 # To really understand GraphQL, go to http://graphql.org/guide/
 
 type Book {
-  id: ID!
-  cacheId: ID!
-  name: String
   authors: [String!]
+  cacheId: ID!
+  id: ID!
+  name: String
 }
 
 # It is necessary to generate input types for creating books
 # ref: http://graphql.org/graphql-js/mutations-and-input-types/
 input BookInput {
-  name: String
   authors: [String!]
+  cacheId: ID
+  id: ID
+  name: String
 }
 
 type Query {
   # Cache control can only be set at root fields
-  books(from: Int = 0, to: Int = 4): [Book] @cacheControl(scope: PUBLIC, maxAge: SHORT)
   book(id: ID!): Book
+  books(from: Int = 0, to: Int = 4): [Book] @cacheControl(scope: PUBLIC, maxAge: SHORT)
   total: Int
 
   """
@@ -28,7 +30,7 @@ type Query {
 
 type Mutation {
   # You should always return the whole object in a mutation, not only a boolean. This will help in browser caching
+  delete(id: String): Boolean
   editBook(id: ID!, book: BookInput!): Book
   newBook(book: BookInput!): Book
-  delete(id: String): Boolean
 }

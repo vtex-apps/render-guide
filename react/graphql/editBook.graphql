@@ -1,8 +1,8 @@
-mutation EditBook ($id: ID!, $book: BookInput!)  {
-  editBook(id: $id, book: $book) {
-    id
-    name
+mutation EditBook ($book: BookInput!, $id: ID!)  {
+  editBook(book: $book, id: $id,) {
     authors
     cacheId
+    id
+    name
   }
 }

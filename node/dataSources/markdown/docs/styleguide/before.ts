@@ -1,5 +1,5 @@
 export default `
-  # Using Styleguide
+  # Using VTEX Styleguide
 
   To use **VTEX's Styleguide**, you first need to add it as a dependency in your app's \`manifest.json\`
 
@@ -18,9 +18,9 @@ export default `
   import { Button } from 'vtex.styleguide'
 
   const MyAwesomeComponent: React.SFC = () => (
-    <Button>Click-me</Button>
+    <Button>Click me</Button>
   )
   \`\`\`
 
-  The code above is shown running bellow:
+  The code above is shown running below:
 `

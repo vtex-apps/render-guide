@@ -1,8 +1,8 @@
 query Book($id: ID!)  {
   book(id: $id) {
-    id
-    name
     authors
     cacheId
+    id
+    name
   }
 }

@@ -1,5 +1,3 @@
-import { Context } from '../typings'
-
 interface Args {
   id: string
 }

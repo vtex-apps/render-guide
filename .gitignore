@@ -33,3 +33,4 @@ npm-debug.log
 .build/
 .eslintrc
 *.orig
+yarn-error.log

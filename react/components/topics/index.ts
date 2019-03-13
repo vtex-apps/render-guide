@@ -1,27 +1,22 @@
 import { Topic } from '../../typings/custom'
 
-import AutomaticCacheUpdate from './AutomaticCacheUpdate'
+import AutomaticCacheUpdates from './AutomaticCacheUpdates'
+import DynamicPagination from './DynamicPagination'
 import ExtensionPoints from './ExtensionPoints'
 import Internationalization from './Internationalization'
-import DynamicPagination from './Pagination/DynamicPagination'
-import StaticPagination from './Pagination/StaticPagination'
 import PreviewWithCachedData from './PreviewWithCachedData'
+import StaticPagination from './StaticPagination'
 import Styleguide from './Styleguide'
 
 const topics: Topic[] = [
   {
-    Component: AutomaticCacheUpdate,
-    name: 'Automatic cache update',
-    slug: 'automatic-cache-update',
-  },
-  {
-    Component: DynamicPagination,
-    name: 'Dynamic pagination',
-    slug: 'dynamic-pagination',
+    Component: Styleguide,
+    name: 'Using VTEX Styleguide',
+    slug: 'styleguide',
   },
   {
     Component: ExtensionPoints,
-    name: 'Extension points',
+    name: 'Extension Points',
     slug: 'extension-points',
   },
   {
@@ -31,8 +26,13 @@ const topics: Topic[] = [
   },
   {
     Component: PreviewWithCachedData,
-    name: 'Preview with cached data',
+    name: 'Preview with Cached Data',
     slug: 'preview-with-cached-data',
+  },
+  {
+    Component: AutomaticCacheUpdates,
+    name: 'Automatic Cache Updates',
+    slug: 'automatic-cache-updates',
   },
   {
     Component: StaticPagination,
@@ -40,9 +40,9 @@ const topics: Topic[] = [
     slug: 'static-pagination',
   },
   {
-    Component: Styleguide,
-    name: 'Using VTEX Styleguide',
-    slug: 'styleguide',
+    Component: DynamicPagination,
+    name: 'Dynamic Pagination',
+    slug: 'dynamic-pagination',
   },
 ]
 

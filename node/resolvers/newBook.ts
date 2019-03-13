@@ -1,4 +1,4 @@
-import { BookInput, Context } from '../typings'
+import { BookInput } from '../typings/custom'
 
 interface Args {
   book: BookInput

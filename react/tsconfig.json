@@ -1,15 +1,10 @@
 {
   "compilerOptions": {
-    "lib": ["es2017","dom"],
+    "lib": ["es2017", "dom"],
     "types": ["node"],
     "typeRoots": ["node_modules/@types"],
-    "target": "es2017",
-    "module": "es6",
     "sourceMap": true,
-    "moduleResolution": "node",
     "jsx": "react",
-    "allowJs": true,
-    "checkJs": true,
     "allowSyntheticDefaultImports": true,
     "noEmitOnError": true,
     "noImplicitReturns": true,
@@ -27,5 +22,5 @@
     "enable": false
   },
   "exclude": ["node_modules"],
-  "include": ["./typings/*.d.ts", "./**/*.tsx"]
+  "include": ["./**/*"]
 }
