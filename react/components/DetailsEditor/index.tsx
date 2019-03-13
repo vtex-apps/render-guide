@@ -35,14 +35,36 @@ type Props = CustomProps & RenderContextProps
 // The state keeps track from the altered user input
 interface State {
   formData: Book
+  prevAuthors: string
 }
 
 class DetailsEditor extends Component<Props, State> {
+  public static getDerivedStateFromProps(props: Props, state: State) {
+    const { prevAuthors } = state
+
+    const currAuthors = props.book.authors
+    const currSerializedAuthors = serializeArray(currAuthors)
+
+    if (currSerializedAuthors !== prevAuthors) {
+      return {
+        ...state,
+        formData: {
+          ...state.formData,
+          authors: currAuthors,
+        },
+        prevAuthors: currSerializedAuthors,
+      }
+    }
+
+    return null
+  }
+
   constructor(props: Props) {
     super(props)
 
     this.state = {
       formData: props.book,
+      prevAuthors: serializeArray(props.book.authors),
     }
   }
 
