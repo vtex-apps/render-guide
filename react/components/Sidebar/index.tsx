@@ -1,10 +1,10 @@
-import React from 'react'
+import React, { FunctionComponent } from 'react'
 
 import topics from '../topics'
 
 import SidebarItem from './Item'
 
-const Sidebar: React.SFC = () => (
+const Sidebar: FunctionComponent = () => (
   <nav className="pv8 br b--light-gray">
     <ul className="pl0 list">
       <SidebarItem name="Render Guide" />

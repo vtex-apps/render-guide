@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { FunctionComponent } from 'react'
 import { EmptyState } from 'vtex.styleguide'
 
 interface Props {
@@ -6,7 +6,7 @@ interface Props {
 }
 
 // A simple empty state with a "coming soon" message.
-const ComingSoon: React.SFC<Props> = ({ title }) => (
+const ComingSoon: FunctionComponent<Props> = ({ title }) => (
   <EmptyState title={title}>Coming soon...</EmptyState>
 )
 
