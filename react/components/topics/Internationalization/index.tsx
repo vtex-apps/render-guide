@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { FunctionComponent } from 'react'
 
 import ComingSoon from '../../ComingSoon'
 
-const Internationalization: React.SFC = () => (
+const Internationalization: FunctionComponent = () => (
   <ComingSoon title="Internationalization" />
 )
 

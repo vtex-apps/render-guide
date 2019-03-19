@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, FunctionComponent } from 'react'
 
 import MarkdownBlock from '../../MarkdownBlock'
 import Pagination from '../../Pagination'
@@ -7,7 +7,7 @@ interface Props {
   id?: string
 }
 
-const StaticPagination: React.SFC<Props> = ({ id }) => (
+const StaticPagination: FunctionComponent<Props> = ({ id }) => (
   <Fragment>
     <MarkdownBlock source="static-pagination/before" />
     <Pagination id={id} type="static" />

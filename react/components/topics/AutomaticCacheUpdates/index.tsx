@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, FunctionComponent } from 'react'
 
 import listBooks from '../../../graphql/books.graphql'
 import { Book } from '../../../typings/custom'
@@ -11,7 +11,7 @@ interface Props {
   id?: string
 }
 
-const AutomaticCacheUpdates: React.SFC<Props> = ({ id }) => {
+const AutomaticCacheUpdates: FunctionComponent<Props> = ({ id }) => {
   const topicPage = 'automatic-cache-updates'
 
   return (
