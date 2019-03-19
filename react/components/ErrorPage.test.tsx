@@ -1,7 +1,7 @@
 import { render } from '@vtex/test-tools/react'
 import React from 'react'
 
-import ErrorPage from '../components/ErrorPage'
+import ErrorPage from './ErrorPage'
 
 test('should render ErrorPage component', () => {
   const { getByText } = render(<ErrorPage />)
