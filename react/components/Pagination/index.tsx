@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { FunctionComponent } from 'react'
 
 import booksQuery from '../../graphql/books.graphql'
 import { Book } from '../../typings/custom'
@@ -14,7 +14,12 @@ interface Props {
   type: 'dynamic' | 'static'
 }
 
-const Pagination: React.SFC<Props> = ({ hasDelete, id, newPage, type }) => {
+const Pagination: FunctionComponent<Props> = ({
+  hasDelete,
+  id,
+  newPage,
+  type,
+}) => {
   const topicPage = `${type}-pagination`
 
   return (

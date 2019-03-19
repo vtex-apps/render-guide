@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { FunctionComponent } from 'react'
 import { RenderContextProps, withRuntimeContext } from 'vtex.render-runtime'
 
 import { Topic } from '../../typings/custom'
@@ -8,7 +8,7 @@ interface Props extends RenderContextProps {
   slug?: Topic['slug']
 }
 
-const Item: React.SFC<Props> = ({ name, runtime, slug }) => {
+const Item: FunctionComponent<Props> = ({ name, runtime, slug }) => {
   const isHome = !slug
 
   return (

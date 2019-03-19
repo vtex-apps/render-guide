@@ -1,9 +1,9 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, FunctionComponent } from 'react'
 import { Helmet } from 'vtex.render-runtime'
 
 import MarkdownBlock from './components/MarkdownBlock'
 
-const Home: React.SFC = () => (
+const Home: FunctionComponent = () => (
   <Fragment>
     <Helmet>
       <title>Render Guide</title>

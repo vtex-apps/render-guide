@@ -1,5 +1,5 @@
 import highlightJs from 'highlight.js'
-import React from 'react'
+import React, { createRef, PureComponent } from 'react'
 
 // import '../code-block.global.css'
 
@@ -7,8 +7,8 @@ interface Props {
   value: string
 }
 
-class CodeBlock extends React.PureComponent<Props> {
-  private codeBlock = React.createRef<HTMLElement>()
+class CodeBlock extends PureComponent<Props> {
+  private codeBlock = createRef<HTMLElement>()
 
   constructor(props: Props) {
     super(props)

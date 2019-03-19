@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { FunctionComponent } from 'react'
 import { Query } from 'react-apollo'
 
 interface Props {
@@ -12,7 +12,7 @@ interface Props {
 // This is a helper component that makes the query and waits untill
 // all of the data is loaded to render the children. While the data
 // is not loaded yet, a Spinner is shown.
-const SyncQueryData = ({
+const SyncQueryData: FunctionComponent<Props> = ({
   children,
   notifyOnNetworkStatusChange,
   prop,

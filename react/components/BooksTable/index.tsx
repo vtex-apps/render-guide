@@ -1,7 +1,7 @@
 // This component queries a list from the database, then it renders a table
 // with each row having a link to a details page
 
-import React from 'react'
+import React, { FunctionComponent } from 'react'
 // withRuntimeContext provides us with the navigate function,
 // necessary for creating links
 import { RenderContextProps, withRuntimeContext } from 'vtex.render-runtime'
@@ -23,7 +23,7 @@ interface CustomProps {
 
 type Props = CustomProps & RenderContextProps
 
-const BooksTable: React.SFC<Props> = ({
+const BooksTable: FunctionComponent<Props> = ({
   isLoading,
   items,
   runtime,
