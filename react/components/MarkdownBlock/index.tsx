@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { FunctionComponent } from 'react'
 import { Query } from 'react-apollo'
 import Markdown from 'react-markdown'
 import { Spinner } from 'vtex.styleguide'
@@ -14,7 +14,7 @@ interface Props {
 }
 
 // This component renders a markdown block synchronously.
-const MarkdownBlock: React.SFC<Props> = ({ source }) => (
+const MarkdownBlock: FunctionComponent<Props> = ({ source }) => (
   <Query query={markdownQuery} variables={{ id: source }}>
     {({ data: { source: markdownSource }, loading }) =>
       loading ? (

@@ -5,7 +5,7 @@
 // it thinks it's necessary. To understand more about fetchMore,
 // please refer to the Apollo Docs!
 
-import React from 'react'
+import React, { FunctionComponent } from 'react'
 import { Query } from 'react-apollo'
 
 import listBooks from '../../graphql/books.graphql'
@@ -20,7 +20,7 @@ interface Props {
   topicPage: string
 }
 
-const PaginatedList: React.SFC<Props> = ({ newPage, topicPage }) => (
+const PaginatedList: FunctionComponent<Props> = ({ newPage, topicPage }) => (
   <SyncQueryData prop="total" query={totalElements}>
     {({ data: { total } }) => (
       <Query query={listBooks} notifyOnNetworkStatusChange>

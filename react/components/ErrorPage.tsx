@@ -1,5 +1,5 @@
-import React from 'react'
+import React, { FunctionComponent } from 'react'
 
-const ErrorPage: React.SFC = () => <h1>404</h1>
+const ErrorPage: FunctionComponent = () => <h1>404</h1>
 
 export default ErrorPage

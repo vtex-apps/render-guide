@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { FunctionComponent } from 'react'
 
-const BlockQuote: React.SFC = ({ children }) => (
+const BlockQuote: FunctionComponent = ({ children }) => (
   <blockquote>
     <p>{children}</p>
   </blockquote>

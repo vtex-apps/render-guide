@@ -1,5 +1,5 @@
 // This component is just a wrapper for Styleguide's table
-import React from 'react'
+import React, { FunctionComponent } from 'react'
 import { RenderContextProps, withRuntimeContext } from 'vtex.render-runtime'
 import { Table } from 'vtex.styleguide'
 
@@ -23,7 +23,7 @@ interface CustomProps {
 
 type Props = CustomProps & RenderContextProps
 
-const TableWrapper: React.SFC<Props> = ({
+const TableWrapper: FunctionComponent<Props> = ({
   books,
   elementsPerPage,
   from,

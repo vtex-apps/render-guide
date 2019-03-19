@@ -3,7 +3,7 @@
 // available, but it's in loading state, the input will be
 // initialized, but disabled
 
-import React from 'react'
+import React, { FunctionComponent } from 'react'
 import { Input as StyleguideInput, Spinner } from 'vtex.styleguide'
 
 interface Props {
@@ -15,7 +15,7 @@ interface Props {
   disabled?: boolean
 }
 
-const Input: React.SFC<Props> = ({
+const Input: FunctionComponent<Props> = ({
   autoFocus,
   loading,
   label,
