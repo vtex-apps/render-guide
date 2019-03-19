@@ -1,9 +1,9 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, FunctionComponent } from 'react'
 import { Button, PageBlock } from 'vtex.styleguide'
 
 import MarkdownBlock from '../../MarkdownBlock'
 
-const Styleguide: React.SFC = () => (
+const Styleguide: FunctionComponent = () => (
   <Fragment>
     <MarkdownBlock source="styleguide/before" />
     <PageBlock>

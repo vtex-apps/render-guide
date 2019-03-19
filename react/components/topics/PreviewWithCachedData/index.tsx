@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, FunctionComponent } from 'react'
 
 import listBooks from '../../../graphql/books.graphql'
 import BooksTable from '../../BooksTable'
@@ -11,7 +11,7 @@ interface Props {
   id?: string
 }
 
-const PreviewWithCachedData: React.SFC<Props> = ({ id }) => (
+const PreviewWithCachedData: FunctionComponent<Props> = ({ id }) => (
   <Fragment>
     <MarkdownBlock source="preview-with-cached-data/before" />
     {id ? (
