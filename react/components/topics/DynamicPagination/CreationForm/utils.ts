@@ -6,8 +6,9 @@ import { CachedBookList, CachedTotal } from '../../../../typings/custom'
 
 export const updateCache: MutationUpdaterFn = (
   cache,
-  { data: { newBook } }
+  { data }
 ) => {
+  const { newBook } = data!
   // If the data is not present in the cache, the readQuery method will throw.
   // This happens when the user first visits this page and then go to the listing page
   try {
