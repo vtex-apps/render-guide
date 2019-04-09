@@ -2,8 +2,11 @@
   "compilerOptions": {
     "types": ["node"],
     "typeRoots": ["node_modules/@types"],
+    "target": "es2017",
+    "module": "commonjs",
+    "moduleResolution": "node",
     "allowJs": false,
-    "allowSyntheticDefaultImports": false,
+    "esModuleInterop": true,
     "noEmitOnError": true,
     "noImplicitReturns": true,
     "noUnusedLocals": true,
@@ -13,11 +16,12 @@
     "alwaysStrict": true,
     "strictNullChecks": true,
     "strictFunctionTypes": true,
-    "strictPropertyInitialization": true
+    "strictPropertyInitialization": true,
+    "skipLibCheck": true
   },
   "typeAcquisition": {
     "enable": false
   },
-  "include": ["./**/*"],
+  "include": ["./**/*.ts", "./typings/*.d.ts"],
   "exclude": ["node_modules"]
 }

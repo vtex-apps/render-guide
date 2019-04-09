@@ -10,8 +10,7 @@ export const updateQuery = (
       ? [
           ...previous.books,
           ...fetchMoreResult.books.filter(
-            book =>
-              !previous.books.find(previousBook => previousBook.id === book.id)
+            book => !previous.books.find(previousBook => previousBook.id === book.id)
           ),
         ]
       : previous.books,

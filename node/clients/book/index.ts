@@ -1,11 +1,13 @@
-import { DataSource } from 'apollo-datasource'
+import { forExternal, IODataSource } from '@vtex/api'
 import { find, findIndex, propEq } from 'ramda'
 
 import { Book, BookInput, Maybe } from '../../typings/custom'
-
 import mock from './mock'
 
-class BookDataSource extends DataSource<Context> {
+export class BookClient extends IODataSource {
+  protected httpClientFactory = forExternal
+  protected service = 'http://example.com'
+
   private db = mock
 
   public book = (id: string) => find(propEq('id', id), this.db)
@@ -17,10 +19,7 @@ class BookDataSource extends DataSource<Context> {
     const foundIndex = findIndex(propEq('id', id), this.db)
 
     if (foundIndex >= 0 && foundIndex < this.db.length) {
-      const newDb = [
-        ...this.db.slice(0, foundIndex),
-        ...this.db.slice(foundIndex + 1),
-      ]
+      const newDb = [...this.db.slice(0, foundIndex), ...this.db.slice(foundIndex + 1)]
 
       this.db = newDb
 
@@ -57,5 +56,3 @@ class BookDataSource extends DataSource<Context> {
 
   public total = () => this.db.length
 }
-
-export default new BookDataSource()

@@ -5,11 +5,11 @@
   "title": "Render Guider",
   "description": "A sample app for introducing some VTEX IO Render concepts and best practices",
   "scripts": {
-    "prereleasy": "bash lint"
+    "prereleasy": "bash pre.sh"
   },
   "builders": {
     "graphql": "1.x",
-    "node": "3.x",
+    "node": "4.x",
     "pages": "1.x",
     "react": "3.x"
   },

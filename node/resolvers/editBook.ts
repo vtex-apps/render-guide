@@ -8,5 +8,5 @@ interface EditBookArg {
 export const editBook = (
   _: any,
   { id, book }: EditBookArg,
-  { dataSources: { database } }: Context
-) => database.editBook(id, book)
+  { clients: { book: booksClient } }: Context
+) => booksClient.editBook(id, book)

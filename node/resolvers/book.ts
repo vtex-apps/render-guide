@@ -1,5 +1,5 @@
-export const book = (
+export const book = async (
   _: any,
   { id }: { id: string },
-  { dataSources: { database } }: Context
-) => database.book(id)
+  { clients: { book: bookClient } }: Context
+) => bookClient.book(id)

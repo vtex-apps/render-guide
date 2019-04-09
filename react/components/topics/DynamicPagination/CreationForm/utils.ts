@@ -4,13 +4,11 @@ import listQuery from '../../../../graphql/books.graphql'
 import totalQuery from '../../../../graphql/total.graphql'
 import { CachedBookList, CachedTotal } from '../../../../typings/custom'
 
-export const updateCache: MutationUpdaterFn = (
-  cache,
-  { data: { newBook } }
-) => {
+export const updateCache: MutationUpdaterFn = (cache, { data }) => {
   // If the data is not present in the cache, the readQuery method will throw.
   // This happens when the user first visits this page and then go to the listing page
   try {
+    const { newBook } = data || { newBook: undefined }
     // Here we read the number of elements of the listing
     const totalData = cache.readQuery<CachedTotal>({ query: totalQuery })
 

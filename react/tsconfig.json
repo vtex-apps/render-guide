@@ -21,6 +21,6 @@
   "typeAcquisition": {
     "enable": false
   },
-  "exclude": ["node_modules"],
-  "include": ["./**/*"]
+  "exclude": ["node_modules", "**/*.test.ts"],
+  "include": ["./**/*.ts", "./typings/*.d.ts"]
 }

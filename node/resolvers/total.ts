@@ -1,5 +1,2 @@
-export const total = (
-  _: any,
-  __: any,
-  { dataSources: { database } }: Context
-) => database.total()
+export const total = (_: any, __: any, { clients: { book: booksClient } }: Context) =>
+  booksClient.total()
