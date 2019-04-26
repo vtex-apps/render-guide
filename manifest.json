@@ -1,19 +1,18 @@
 {
-  "name": "render-guide",
+  "name": "web-framework-guide",
   "vendor": "vtex",
   "version": "0.0.0",
-  "title": "Render Guider",
-  "description": "A sample app for introducing some VTEX IO Render concepts and best practices",
+  "title": "VTEX IO Web Framework Guide",
+  "description": "A sample app for introducing some VTEX IO Web Framework concepts and best practices",
   "scripts": {
     "prereleasy": "bash pre.sh"
   },
   "builders": {
-    "graphql": "1.x",
-    "node": "4.x",
     "pages": "1.x",
     "react": "3.x"
   },
   "dependencies": {
+    "vtex.graphql-example": "0.x",
     "vtex.styleguide": "9.x"
   }
 }

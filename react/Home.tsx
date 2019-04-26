@@ -6,7 +6,7 @@ import MarkdownBlock from './components/MarkdownBlock'
 const Home: FunctionComponent = () => (
   <Fragment>
     <Helmet>
-      <title>Render Guide</title>
+      <title>VTEX IO Web Framework Guide</title>
     </Helmet>
     <MarkdownBlock source="home/main" />
   </Fragment>
