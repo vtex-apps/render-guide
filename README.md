@@ -31,7 +31,7 @@
   just enter the \`/guide\` route and play a little
 
   ## How to read this repo
-  An antipattern present in this repo is that the front and back-end code are in the same app. Usually they are split into different apps, given their differences in development cycle. Also, if your project is big enought, it's suggested you split your front-end app into a components app and a **Pages** app (app that places and instanciates these components). For the sake of simplicity and example efficiency, all these apps are joined into this one
+  An antipattern present in this repo is that the front and back-end code are in the same app. Usually they are split into different apps, given their differences in development cycle. Also, if your project is big enough, it's suggested you split your front-end app into a components app and a **Pages** app (app that places and instantiates these components). For the sake of simplicity and example efficiency, all these apps are joined into this one
 
   ### Basic architecture
   Since *web-framework-guide* is a VTEX IO app like any other, its folder structure is well known. In the root folder you can find a \`manifest.json\`, containing all of the app's metadata, like name, vendor, version etc. Also, you will find the following folders, each one matching it's corresponding builder
@@ -39,7 +39,7 @@
   - node - *where you actually implement your back-end app*
   - graphql - *where you define your graphql schema*
   - react - *where you write your react components*
-  - pages - *where you place and instanciate the components*
+  - pages - *where you place and instantiate the components*
 
   ### What if I didn't understand something ?
   If you didn't understand something or if you think this doc is incomplete, please open an issue in GitHub!
